@@ -1,0 +1,90 @@
+body{
+    background-color: #630973 !important;
+    color: white;
+}
+
+.formrow{
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    color: #630973;
+    
+}
+
+.form-group{
+    margin-top: 1rem;
+}
+
+.form-group label {
+    display: block; 
+    text-align: left;
+    margin: 0.75rem;
+}
+
+.btn-primary {
+    background-color: rgb(80, 0, 80) !important; /* Set the button background color to purple */
+    color: white; /* Set the text color to white */
+    margin: 1.5rem;
+    font-weight: bolder !important;
+    border: none !important;
+    padding: 0.5rem !important;
+}
+
+.recentTransactions{
+    color: white !important;
+}
+
+.button-block{
+    background-color: #630973 !important;
+    color: white !important;
+}
+
+.btn-block:hover{
+    background-color: white !important;
+    color:#630973 !important;
+}
+
+.btn-block:hover .transfername{
+    color:#630973 !important;
+}
+
+.transfername{
+    color:white !important;
+    font-size: 1.25rem;
+}
+
+.badge{
+    background-color: #630973;
+    border: 0.1rem white dashed;
+}
+
+.SelfTransfer{
+    color:white;
+}
+
+.addnewcard{
+    background:none ;
+    border: 20px white dashed;
+    color:white;
+}
+
+.TransactionsList{
+    color:white
+}
+
+th{
+    color:#630973 !important;
+}
+
+thead{
+    height: 3rem;
+}
+
+.Balance-Check{
+    color:#630973 !important;
+}
+
+.selected-card {
+    border: 0.5rem black solid !important;
+  }
+  

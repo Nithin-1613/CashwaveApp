@@ -7,7 +7,9 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from 'react-redux';
 import store from './Redux/store';
 import PaymentPage from './Components/PaymentPage';
-
+import SelfTransfer from './Components/SelfTransfer';
+import Transfer from './Components/Transfer';
+import CreditCard from './Components/CreditCard';
 function App() {
   return (
     <Provider store={store}>
@@ -17,8 +19,9 @@ function App() {
             <Route path="/" element={<InsuranceMainPage />} />
             <Route path="/linkAccount" element={<LinkAccount />} />
             <Route path="/paymentpage" element={<PaymentPage/>} />
-            {/* <Route path="/insuranceDetails" element={<InsuranceDetails />} /> */}
-            {/* This route doesn't have a parameter */}
+            <Route path='/selftransfer' Component={SelfTransfer}/>
+            <Route path='/transfer' Component={Transfer}/>
+            <Route path='/creditCard' Component={CreditCard}/>
             <Route path="/insuranceDetails/:policynumber" element={<InsuranceDetails />} />
            
 
