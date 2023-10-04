@@ -1,0 +1,121 @@
+.App{
+    /* background-image: url('./bgregister.jpeg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-reg{
+    padding: 2rem;
+}
+
+#formcontent{
+    background-color: rgb(255, 255, 255);
+}
+
+.btn-submit{
+    /* background-image: url('./bgregister.jpeg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    width: 12vw;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.btn-submit2{
+    /* background-image: url('./bgregister.jpeg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-weight: 400;
+    width: 8vw;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.btn-submit2:hover{
+    background-image: none;
+    background-color: rgb(185, 185, 185);
+    font-weight: 500;
+    white-space: nowrap;
+}
+.btn-submit:hover{
+    background-image: none;
+    background-color: rgb(185, 185, 185);
+    font-weight: 500;
+    white-space: nowrap;
+}
+.login-label{
+    color:rgb(76, 15, 132);
+    font-weight: 400;
+    font-size: large;
+}
+
+.modal-body{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.login-input{
+    margin-top: 0.5rem;
+}
+
+.service-bg {
+    /* background-image: url('bgregister.jpeg');  */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+  }
+  
+  .service-content {
+    margin-top: 50px; /* Adjust the margin to create space below the navbar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; /* Adjust this value for a larger content container */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow effect */
+  }
+  
+  .service-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .service-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping to arrange buttons in rows */
+    justify-content: center; /* Center buttons horizontally */
+  }
+  
+  .service-button {
+    /* background-image: url('./bgregister.jpeg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-weight: 400;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    width: 200px;
+    margin: 10px; /* Add spacing between buttons */
+  }
+
+
+  .service-button:hover{
+    background-image: none;
+    background-color: rgb(185, 185, 185);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+
+ 
+.navbar{
+    height:14vh;
+}

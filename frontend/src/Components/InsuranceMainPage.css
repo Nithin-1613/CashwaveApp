@@ -1,0 +1,33 @@
+.main-container {
+    /* background-image: url('./bghome.jpeg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #48108c;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center
+  }
+  
+  .main-buttons{
+    display: flex;
+    justify-content:space-between;
+  }
+
+  .main-buttons > button{
+    font-size: 1.3rem;
+    font-weight:500;
+    margin-left: 2%;
+    background-color: aliceblue;
+    color: rgb(7, 10, 13);
+    white-space: nowrap;
+    width: 12vw;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+  }
+
+  button:hover{
+    background-color: rgb(185, 185, 185);
+    color: rgb(7, 10, 13);
+  }
