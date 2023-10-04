@@ -1,0 +1,46 @@
+{
+  "loans": [
+    {
+      "id": 1,
+      "lender": "Axis Bank",
+      "loanNumber": "12233568",
+      "amountPayable": 12000
+    },
+    {
+      "id": 2,
+      "lender": "HDFC Bank",
+      "loanNumber": "12233568",
+      "amountPayable": 20000
+    },
+    {
+      "id": 3,
+      "lender": "HDFC Bank",
+      "loanNumber": "12234568",
+      "amount payable": 42000
+    },
+    {
+      "lender": "Lender B",
+      "loanNumber": "12233568",
+      "amountPayable": "12000",
+      "id": 4
+    },
+    {
+      "lender": "Lender B",
+      "loanNumber": "12233560",
+      "amountPayable": "12000",
+      "id": 5
+    },
+    {
+      "lender": "HDFC Bank",
+      "loanNumber": "12344559",
+      "amountPayable": "150000",
+      "id": 6
+    },
+    {
+      "lender": "State Bank of India (SBI)",
+      "loanNumber": "12345566",
+      "amountPayable": "10000",
+      "id": 7
+    }
+  ]
+}

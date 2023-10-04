@@ -1,0 +1,29 @@
+ body {
+    background-color: #fff; /* Replace with the color of your choice */
+  }
+  
+ .d-grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .pill-button {
+    border: none;
+    font-family: "RNHouseSansRegular",sans-serif;
+    padding: 10px 10px;
+    border-radius: 100px; /* This value can be adjusted as needed for the desired pill shape */
+    background-color: #5a287d; /* Default background color */
+    color: #fff; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth color transition on hover */
+    margin: 1px; /* Add margin between buttons */
+  }
+  
+  .pill-button:hover {
+    background-color: #2b1539; /* Change background color on hover */
+  }
+
+  
