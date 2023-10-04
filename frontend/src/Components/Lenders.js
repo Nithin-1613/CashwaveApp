@@ -2,7 +2,7 @@ import React from 'react';
 import "./lenders.css";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { setSelectedLender } from '../redux/actions'; 
+import { setSelectedLender } from '../Redux/actions'; 
 import { useNavigate } from 'react-router-dom'; 
 
 const Lenders = () => {

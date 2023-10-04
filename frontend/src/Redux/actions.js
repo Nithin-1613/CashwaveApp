@@ -60,3 +60,29 @@ export const fetchPolicyData = (policynumber) => {
 //     payload: error,
 //   };
 // };
+export const SET_BUTTON_CLICKED = 'SET_BUTTON_CLICKED';
+export const SET_SELECTED_LENDER = 'SET_SELECTED_LENDER';
+export const SET_LOAN_DETAILS = 'SET_LOAN_DETAILS';
+export const SET_EMI_AMOUNT = 'SET_EMI_AMOUNT';
+
+export const setButtonClicked = (buttonName) => ({
+  type: SET_BUTTON_CLICKED,
+  payload: buttonName,
+});
+
+export const setSelectedLender = (lender) => ({
+  type: SET_SELECTED_LENDER,
+  payload: lender,
+});
+
+export const setLoanDetails = (lender, loanNumber, amountPayable) => ({
+  type: SET_LOAN_DETAILS,
+  payload: { lender, loanNumber, amountPayable },
+});
+
+export const setEmiAmount = (emiAmount) => ({
+  type: SET_EMI_AMOUNT,
+  payload: emiAmount,
+});
+
+

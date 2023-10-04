@@ -1,7 +1,7 @@
 import React from 'react';
 import "./payloan.css";
 import { useDispatch } from 'react-redux';
-import { setButtonClicked } from '../redux/actions'; 
+import { setButtonClicked } from '../Redux/actions';
 import { useNavigate } from 'react-router-dom';
 
 const PayLoan = () => {

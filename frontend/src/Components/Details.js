@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEmiAmount } from '../redux/actions'; // Import your action creators
+import { setEmiAmount } from '../Redux/actions';
 import { useNavigate } from 'react-router-dom';
 
 const Details = () => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./PayEMI.css";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setLoanDetails } from '../redux/actions';
+import { setLoanDetails } from '../Redux/actions';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
