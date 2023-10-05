@@ -1,77 +1,65 @@
-import React from 'react'
-import { UseSelector } from 'react-redux/es/hooks/useSelector'
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { fetchPolicyData } from '../Redux/actions'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { fetchUserData } from '../Redux/actions1'; 
+import { useHistory } from 'react-router-dom';
+import './Navbar.css';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-const Navbar = () => {
-    const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
-  console.log('User Data:', user);
- 
-
-  useEffect(() => {
-    // Fetch user data when the component is mounted (you can replace '123456' with the actual account number)
-    dispatch(fetchPolicyData(policies.policynumber));
+const NavBar = () => {
     
-  }, [dispatch]); 
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+//   const user = {"name":"Mohit"};
+  console.log("navbar",user);
  
 
+  console.log("dummy")
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container">
-<a className="navbar-brand" href="#">
+      // Conditional rendering or provide a default value
       
-      
-        Natwest Banking
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav ml-auto">
-      
-          <li className="nav-item">
-            {policies ? (
-            <h1>Welcome ,{policies.policynumber}!</h1>
-        ) : (
-            <h1>Loading...</h1> // or provide an error message
-        )}
-          </li>
-        
-      {/* <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"><img
-            src="https://t4.ftcdn.net/jpg/04/83/90/95/360_F_483909569_OI4LKNeFgHwvvVju60fejLd9gj43dIcd.jpg"
-            alt="Dropdown Icon"
-            className="dropdown-icon"  width="50" height="50" 
-          /></a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a className="dropdown-item"href="/">Personal info</a></li>
-          <li><a className="dropdown-item"href="/">Feedback</a></li>
-          <li><a className="dropdown-item" href="/">logout</a></li>
-        </div> */}
-        
-      {/* </li> */}
-      </ul>
+      <nav class="navbar">
+      <div class="navbar-logo">
+          <a href="#">
+              <img src="https://www.fintechfutures.com/files/2023/02/Natwest.png" width="50" height="50" alt="Brand Logo"/>
+          </a>
       </div>
-      
-    </div>
-  </nav>
-  )
-}
+      <div class="navbar-links">
+          <a href="/">Home</a>
+      </div>
+      <div class="navbar-space"></div>
+      <div class="navbar-user">
+          <div class="row">
+              <div class="col-auto">
+                  {user ? (
+                      <h1>Welcome, {user.name}!</h1>
+                  ) : (
+                      <h1>Loading...</h1> // or provide an error message
+                  )}
+              </div>
+              <div class="col-auto">
+              <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <img src="https://cdn-icons-png.flaticon.com/512/4715/4715330.png" width="50" height="50"/>
+      </Dropdown.Toggle>
 
-export default Navbar
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">feedback</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item href="/">Logout</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+    </div>
+      </div>
+      </div>
+  </nav>
+  
+   
+      
+  );
+};
+
+export default NavBar;

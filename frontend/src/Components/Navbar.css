@@ -1,0 +1,324 @@
+/* Navbar styling */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #441475; /* Adjust background color as needed */
+    color: white; /* Adjust text color as needed */
+}
+
+.navbar-logo img {
+    width: 50px; /* Adjust logo width as needed */
+    height: auto;
+}
+
+.navbar-links a {
+    margin-right: 10px; /* Adjust the margin between links as needed */
+    text-decoration: none;
+    color: white; /* Adjust link color as needed */
+}
+.navbar-space {
+    flex-grow: 1; /* Let it grow and take up available space */
+}
+.navbar-search {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-search input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc; /* Adjust border styles as needed */
+    border-radius: 3px;
+}
+
+.navbar-search button {
+    padding: 5px 10px;
+    background-color: #7d0bc4; /* Adjust button background color as needed */
+    color: white; /* Adjust button text color as needed */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 5px; /* Adjust the margin between input and button as needed */
+}
+.content {
+    display: flex;
+    align-items: center;
+    background-color: #6f359b;
+    
+  }
+  
+  .left-column {
+    flex: 1;
+  }
+  
+  .right-column {
+    flex: 1;
+    padding: 20px; /* Add padding as needed */
+  }
+  
+  /* Additional styling for quote and buttons */
+  .quote {
+    color:white;
+    margin-bottom: 20px; /* Adjust margin as needed */
+    font-size: 24px; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    font-style: italic; /* Adjust margin as needed */
+  }
+  
+  .bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+  }
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Remove card border and box shadow */
+  .card {
+    border: none;
+    
+  }
+  
+  .buttons button {
+    margin-bottom: 40px;
+    margin-top: -5px; /* Add more space between the buttons */
+    padding: 20px 40px; /* Increase button size */
+    background-color: rgb(113, 7, 170); /* Change button color to purple */
+    color: white; /* Set text color to white */
+    border: none; /* Remove button border */
+    border-radius: 20px; /* Add curve to button shape */
+    cursor: pointer;  /* Add margin as needed */
+  }
+  .buttons button:hover {
+    background-color: #6b38ff; /* Change button color on hover */
+  }
+  .buttons button.login {
+    margin-right: 80px; /* Adjust margin as needed */
+  }
+  
+  /* Search form styling */
+  .form-control,
+  .btn-outline-success {
+    background-color: white;
+    color: #7406b8;
+    border-color: white;
+  }
+  /* Your CSS file */
+
+.footer {
+    background-color: #41076d; /* Background color for the footer */
+    color: white; /* Text color for the footer */
+    display: flex;
+    justify-content: space-between; /* Space between left and right sections */
+    padding: 20px; /* Padding for the footer */
+    position: fixed;
+    bottom: 0; /* Stick to the bottom of the viewport */
+    width: 100%;
+  }
+  .copyright {
+    font-size: 12px; /* Adjust font size as needed */
+     }
+  
+     .left-section,
+     .right-section {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+     }
+     
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 20px; /* Space between links */
+  }
+  .footer-links a + a {
+    margin-left: 300px; /* Adjust the left margin to increase space */
+  }
+  
+  .social-icon-box {
+    display: inline-block;
+    border: 2px solid white; /* Border around the icon box */
+    align-items: center; /* Vertically center the icon */
+  justify-content: center;
+  border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px; /* Adjust padding as needed */
+    margin-right: 20px; /* Space between icon boxes */
+    width: 40px; /* Set a fixed width for the boxes (adjust as needed) */
+    height: 40px;  
+}
+  
+  /* Style the social icons inside the boxes */
+  .social-icon {
+    color: white;
+    text-decoration: none;
+    font-size: 30px; /* Adjust the font size for social icons */
+  }
+ 
+  
+  
+  
+  .right-section {
+    text-align: right;
+    
+  }
+  /* Style for the login box */
+  .center-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Make the container cover the entire viewport height */
+  }
+.login-box {
+    width: 500px; 
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 30px; /* Increase the padding to make the box larger */
+    background-color: #d3d0d5; /* Background color for the box */
+    border-radius: 10px; /* Rounded corners for the box */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the content inside the box */
+    margin-right: 300px; 
+}
+  .login-box input[type="emailid"],
+.login-box input[type="password"] {
+    height: 40px; /* Increase input field height */
+    font-size: 18px; /* Increase font size */
+    padding: 10px; /* Add padding to input fields */
+    margin-bottom: 10px; /* Add margin to separate the inputs */
+    display: block; /* Display each input on a new line */
+    width: 100%; /* Add margin to separate the inputs */
+}
+.login-box h3 {
+    font-size: 28px; 
+    margin-bottom:20px;/* Adjust the font size as needed */
+  }
+  
+  .login-box h1 {
+    font-size: 48px;
+    margin-bottom: 20px; /* Adjust the font size as needed */
+  }
+  
+  .login-form {
+    font-size: 20px;
+    margin-bottom: 20px; /* Adjust the font size as needed */
+  }
+  
+  /* Style for the login button */
+  .login-box button[type="submit"] {
+    background-color: #4e0898; /* Background color for the button (blue) */
+    color: #fff; /* Text color for the button (white) */
+    padding: 12px 24px; /* Increase padding to make the button larger */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer;
+    font-size: 20px; /* Increase font size */
+    transition: background-color 0.3s; /* Add a smooth hover effect */
+  }
+  
+  .login-box button[type="submit"]:hover {
+    background-color: #0056b3; /* Change the button color on hover */
+  }
+  
+  /* Add margin to the bottom of the form content */
+#formcontent {
+    margin-bottom: 80px; /* Adjust the margin as needed */
+  }
+  
+  
+  
+  /* Header styling */
+  .container h1 {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .text-center {
+    margin-top: 20px;
+  }
+  
+  .btn-curved {
+    border-radius: 100px;
+    margin-right: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+  }
+  
+  /* Footer styling */
+  .footer-sec {
+    background-color: #330066;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .container1 {
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .col-lg-4 {
+    flex-grow: 1;
+  }
+  
+  .footer-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  .footer-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none !important;
+    text-align: left;
+    color: white;
+  }
+  
+  .footer-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+  }
+  
+  .btn-floating {
+    font-size: 1.25rem;
+    margin: 5px;
+  }
+  
+  /* Adjust padding for mobile devices */
+  @media (max-width: 768px) {
+    .container1 {
+      padding: 10px;
+    }
+  }
+  
+  /* Add more responsive styling as needed */
+  
