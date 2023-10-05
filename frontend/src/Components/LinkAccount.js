@@ -18,7 +18,7 @@ const LinkAccount = () => {
     emailid: '',
     startdate: new Date(),
     enddate: new Date(),
-   
+  
   };
 
   const [policy, setPolicy] = useState(initialPolicyState);
@@ -266,7 +266,6 @@ const LinkAccount = () => {
               )}
             </div>
 
-          
 
             <button type="submit" className="btn-submit">
               Link Account
