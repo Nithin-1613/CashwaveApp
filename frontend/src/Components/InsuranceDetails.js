@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 const InsuranceDetails = () => {
   const { policynumber } = useParams();
-  const policies = useSelector(state => state.policies);
+  const policies = useSelector(state => state.reducer.policies);
   const navigate = useNavigate();
 
+  console.log(policies);
   const policiesArray = policies[0]; // Access the innermost array
   const policy = policiesArray.find(policy => policy.policynumber === policynumber);
 
