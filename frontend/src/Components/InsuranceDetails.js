@@ -23,7 +23,7 @@ const InsuranceDetails = () => {
   }
 
   return (
-    <div className="container-fluid service-bg vh-100">
+    <div className="container-fluid service-bg vh-100" style={{ backgroundColor: 'rgb(64, 4, 80)' }}>
       <nav className="navbar navbar-light bg-light">
         <div className="container">
           <a className="navbar-brand" href="#">
@@ -41,7 +41,7 @@ const InsuranceDetails = () => {
         </div>
       </nav>
 
-      <div className="container service-content mt-5">
+      <div className="container service-content mt-5" style={{ backgroundColor: 'rgb(87, 5, 110)' }}>
         <div className="card text-center">
           <div className="card-header">
             <h2 className="policy-heading">Policy Details</h2>
@@ -51,17 +51,19 @@ const InsuranceDetails = () => {
             <p className="policy-text"><strong>Policy Provider:</strong> {policy.policyProviderName}</p>
             <p className="policy-text"><strong>Policy Type:</strong> {policy.policytype}</p>
             <p className="policy-text"><strong>Policy Amount:</strong> {policy.policyamount}</p>
+            <p className="policy-text"><strong>Premium Amount:</strong> {policy.premium}</p>
             {/* Add more policy details here */}
+            <button
+          onClick={() => navigate('/paymentpage')}
+          className="btn btn-primary mt-4"
+          style={{ backgroundColor: 'rgb(87, 5, 110)' }}
+        >
+          <p className="policy-text"><strong>Pay Premium Amount:</strong> {policy.premium} INR</p>
+        </button>
           </div>
         </div>
 
-        <button
-          onClick={() => navigate('/paymentpage')}
-          className="btn btn-primary mt-4"
-          style={{ backgroundColor: 'purple', borderColor: 'purple' }}
-        >
-          Pay Premium
-        </button>
+       
       </div>
     </div>
   );

@@ -1,33 +1,90 @@
 .main-container {
-    /* background-image: url('./bghome.jpeg'); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #48108c;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items:center
-  }
-  
-  .main-buttons{
-    display: flex;
-    justify-content:space-between;
-  }
+  background-color: rgb(87, 5, 110);
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.link-account-button {
+  background-color: orange; /* You can change the color to your preference */
+  color: white; /* Text color */
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+  white-space: nowrap;
+  width: 20vw; /* Adjust the width instead of min-width */
+  height: 3rem; /* Reduce the height to make it rectangular */
+  padding: 0.5rem 1rem; /* Adjust padding for the rectangular shape */
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-  .main-buttons > button{
-    font-size: 1.3rem;
-    font-weight:500;
-    margin-left: 2%;
-    background-color: aliceblue;
-    color: rgb(7, 10, 13);
-    white-space: nowrap;
-    width: 12vw;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    border: none;
-  }
 
-  button:hover{
-    background-color: rgb(185, 185, 185);
-    color: rgb(7, 10, 13);
-  }
+.main-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-buttons > button {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  white-space: nowrap;
+  width: 20vw; /* Adjust the width instead of min-width */
+  height: 3rem; /* Reduce the height to make it rectangular */
+  padding: 0.5rem 1rem; /* Adjust padding for the rectangular shape */
+  border-radius: 0.5rem;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(185, 185, 185);
+  color: rgb(7, 10, 13);
+}
+.container service-content mt-5{
+  background-color: rgb(64, 4, 80);
+}
+.modal-footer .btn-submit2 {
+  background-color: lightgray; /* Change the background color */
+  color: black; /* Change the text color */
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect */
+.modal-footer .btn-submit2:hover {
+  background-color: rgb(185, 185, 185);
+  color: rgb(7, 10, 13);
+}
+.link-account-button {
+  background-color: orange; /* You can change the color to your preference */
+  color: white; /* Text color */
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+  white-space: nowrap;
+  width: 20vw; /* Adjust the width instead of min-width */
+  height: 3rem; /* Reduce the height to make it rectangular */
+  padding: 0.5rem 1rem; /* Adjust padding for the rectangular shape */
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for the "Link Account" button */
+.link-account-button:hover {
+  background-color: rgb(141, 8, 155); /* Change the color on hover */
+  /* You can adjust the hover color to your preference */
+}

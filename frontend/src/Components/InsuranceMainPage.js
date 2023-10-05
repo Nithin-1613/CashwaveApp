@@ -61,18 +61,21 @@ const InsuranceMainPage = () => {
     setShowModal(true);
   };
 
-  // Extract all insurance provider names
   const allProviders = policies.map((policy) => policy.policyProviderName);
 
-  // Filter out duplicate insurance provider names
-  const uniqueProviders = [...new Set(allProviders)];
+  // Filter out duplicate insurance provider names and empty strings
+  const filteredProviders = allProviders.filter(provider => provider);
+
+  // Remove duplicate values
+  const uniqueProviders = Array.from(new Set(filteredProviders));
 
   const handleLinkAccount = (providerName) => {
     navigate('/linkAccount');
   };
-
   return (
     <div className="main-container">
+       <h2 className="all-providers-text">All Providers</h2>
+     
       <div className="main-buttons">
         {uniqueProviders.map((provider) => (
           <button
@@ -83,7 +86,8 @@ const InsuranceMainPage = () => {
             {provider}
           </button>
         ))}
-        <button type="button" onClick={handleNavigate}>
+        <button type="button" onClick={handleNavigate}
+        className="link-account-button">
           Link Account
         </button>
       </div>
@@ -97,7 +101,7 @@ const InsuranceMainPage = () => {
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header"style={{ backgroundColor: 'rgb(64, 4, 80)' }}>
               <h5 className="modal-title">Policy Login - {selectedPolicy}</h5>
               <button
                 type="button"
@@ -133,7 +137,7 @@ const InsuranceMainPage = () => {
               >
                 Close
               </button>
-              <button type="submit" onClick={handleSubmit} className="btn-submit2">
+              <button type="submit" onClick={handleSubmit} className="btn-submit2" >
                 Verify
               </button>
             </div>
