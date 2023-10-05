@@ -59,8 +59,8 @@ const PaymentPage = () => {
         }
 
         const transaction_details = {
-            accountNo: details.accountNo,
-            accountHolderName: details.accountHolderName,
+            receiverNo: details.receiverNo,
+            receiverName: details.receiverName,
             amount: amount,
             description: details.description,
 
@@ -112,7 +112,7 @@ const PaymentPage = () => {
                 <div className="row justify-content-center ">
                     <div className="col-md-6 formrow">
                         <h1>Payment gateway </h1>
-                        <h2>To : {details.accountHolderName}</h2>
+                        <h2>To : {details.receiverName}</h2>
                         <form onSubmit={handlePayment}>
                             <div className="mb-3 form-group">
                                 <label htmlFor="amount" className="form-label">

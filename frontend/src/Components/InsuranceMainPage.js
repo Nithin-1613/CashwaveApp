@@ -25,7 +25,7 @@ const InsuranceMainPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.get(`http://localhost:8080/api/policies?policynumber=${policynumber}`);
+      const result = await axios.get(`http://localhost:9092/api/policies?policynumber=${policynumber}`);
       if (result.data.length === 0) {
         alert('Policy Number not found');
       } else {
@@ -43,7 +43,7 @@ const InsuranceMainPage = () => {
   useEffect(() => {
     const fetchPolicies = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/policies');
+        const response = await axios.get('http://localhost:9092/api/policies');
         setPolicies(response.data);
       } catch (error) {
         console.error('Failed to fetch policies:', error);

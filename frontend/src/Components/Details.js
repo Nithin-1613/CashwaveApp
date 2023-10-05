@@ -12,13 +12,18 @@ const Details = () => {
 
   const handleContinuePayment = () => {
     // Validation logic can be added here
-
+    const transaction_details={
+      receiverNo:loanDetails.loanNumber,
+      receiverName:loanDetails.lender,
+      description:"Loan emi"
+    }
+    sessionStorage.setItem("transaction_details",transaction_details);
     // Dispatch an action to set the EMI amount
     dispatch(setEmiAmount(emiAmount));
     console.log(loanDetails);
 
     // Redirect to the Banks component
-    navigate("/banks"); // Adjust the path as per your routing
+    navigate("/paymentpage"); // Adjust the path as per your routing
   };
 
   return (

@@ -33,7 +33,7 @@ export const getPolicyError = (error) => ({
 export const fetchPolicyData = (policynumber) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/policies?policynumber=${policynumber}`);
+      const response = await axios.get(`http://localhost:9092/api/policies?policynumber=${policynumber}`);
       const policyData = response.data;
       
       if (policyData) {

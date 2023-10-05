@@ -3,6 +3,7 @@ import axios from "axios";
 import { Modal,Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 const CreditCard = () => {
     const [creditCards, setCreditCards] = useState([]);
@@ -13,7 +14,7 @@ const CreditCard = () => {
     const [isFormValid, setIsFormValid] = useState(false);
 
     const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-
+    let navigate=useNavigate();
 
     const [newCreditCard, setNewCreditCard] = useState({
         creditCardNo: "",
@@ -59,6 +60,13 @@ const CreditCard = () => {
     }
 
     const handlePayment= ()=>{
+        const transaction_details={
+            receiverNo:selectCreditCard.creditCardNo,
+            receiverName:selectCreditCard.cardHolderName,
+            description:"Creditcard bill"
+        }
+        sessionStorage.setItem('transaction_details',JSON.stringify(transaction_details));
+        navigate("/paymentpage");
 
     }
     const handleSaveCreditCard = () => {

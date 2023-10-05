@@ -17,6 +17,7 @@ import PayEMI from './Components/PayEMI';
 import Details from './Components/Details';
 import Banks from './Components/Banks';
 import Status from './Components/Status';
+import Transactions from './Components/Transactions';
 function App() {
   return (
     <Provider store={store}>
@@ -37,6 +38,7 @@ function App() {
             <Route path="/details" Component={Details}/>
             <Route path="/banks" Component={Banks}/>
             <Route path="/status" Component={Status}/>
+            <Route path="/transactions" Component={Transactions}/>
           </Routes>
         </BrowserRouter>
       </div>

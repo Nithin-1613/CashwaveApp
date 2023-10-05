@@ -19,7 +19,7 @@ const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
     const [showBalance,setShowBalance] = useState(false);
     useEffect(() => {
-        axios.get("http://localhost:8080/cashwave/nithin123/listTrans")
+        axios.get("http://localhost:9090/transfer/nithin16/listTrans")
             .then((response) => {
                 const dataWithSNO = response.data.map((item, index) => ({
                     ...item,
@@ -29,7 +29,7 @@ const Transactions = () => {
                 setFilteredTable(dataWithSNO);
             })
 
-        axios.get("http://localhost:8080/cashwave/nithin123/listAccounts")
+        axios.get("http://localhost:8082/account/nithin16/listAccounts")
             .then((response) => {
                 setAccounts(response.data);
             })

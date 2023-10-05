@@ -6,9 +6,9 @@ const Transfer = () => {
 
     let navigate=useNavigate();
     const [formData, setFormData] = useState({
-        accountNo: '',
+        receiverNo: '',
         ifscCode: '',
-        accountHolderName: '',
+        receiverName: '',
         description: '',
     });
 
@@ -43,13 +43,13 @@ const Transfer = () => {
                         <h2>Transfer Funds</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label htmlFor="accountNo">Account Number</label>
+                                <label htmlFor="receiverNo">Account Number</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="accountNo"
-                                    name="accountNo"
-                                    value={formData.accountNo}
+                                    id="receiverNo"
+                                    name="receiverNo"
+                                    value={formData.receiverNo}
                                     onChange={handleChange}
                                     required
                                 />
@@ -69,13 +69,13 @@ const Transfer = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="accountHolderName">Account Holder's Name</label>
+                                <label htmlFor="receiverName">Account Holder's Name</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="accountHolderName"
-                                    name="accountHolderName"
-                                    value={formData.accountHolderName}
+                                    id="receiverName"
+                                    name="receiverName"
+                                    value={formData.receiverName}
                                     onChange={handleChange}
                                     required
                                 />
@@ -113,9 +113,9 @@ const Transfer = () => {
                                         }}
                                     >
                                         <span className="badge rounded-pill" style={{ fontSize: "1.5rem" }}>
-                                            {transaction.accountHolderName[0]}
+                                            {transaction.receiverName[0]}
                                         </span>
-                                        <div className="transfername">{transaction.accountHolderName}</div>
+                                        <div className="transfername">{transaction.receiverName}</div>
                                     </button>
                                 </div>
                             ))}
