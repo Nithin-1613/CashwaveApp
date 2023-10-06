@@ -1,6 +1,7 @@
 // redux/reducers/authReducer.js
+const user = JSON.parse(localStorage.getItem('user'));
 const initialState = {
-    user:null,
+    user:user||null,
     error: null,
   };
   

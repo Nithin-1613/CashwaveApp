@@ -16,7 +16,7 @@ const NavBar = () => {
   console.log("navbar",user);
  
 
-  console.log("dummy")
+ 
   return (
       // Conditional rendering or provide a default value
       

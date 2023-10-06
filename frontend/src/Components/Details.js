@@ -15,7 +15,7 @@ const Details = () => {
     const transaction_details={
       receiverNo:loanDetails.loanNumber,
       receiverName:loanDetails.lender,
-      description:"Loan emi"
+      description:"Loan Emi"
     }
     sessionStorage.setItem("transaction_details",transaction_details);
     // Dispatch an action to set the EMI amount

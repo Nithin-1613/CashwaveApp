@@ -4,8 +4,12 @@ import { Modal,Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CreditCard = () => {
+    const user = useSelector((state) => state.auth.user);
+    const userid=user.id;
+    const email=user.emailid;
     const [creditCards, setCreditCards] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectCreditCard, setSelectCreditCard] = useState("");
@@ -29,7 +33,8 @@ const CreditCard = () => {
     };
 
     useEffect(() => {
-        axios.get("http://localhost:8085/creditcard/nithin16/listCreditCard")
+
+        axios.get("http://localhost:8085/creditcard/"+userid+"/listCreditCard")
             .then((response) => {
                 setCreditCards(response.data);
                 setLoading(false); // Set loading to false once data is loaded
@@ -88,7 +93,7 @@ const CreditCard = () => {
         }
 
         console.log(formattedExpiryDate);
-        axios.post('http://localhost:8085/creditcard/nithin16/addCreditCard',ccRequest).then(()=>{
+        axios.post("http://localhost:8085/creditcard/"+email+"/addCreditCard",ccRequest).then(()=>{
             alert("credit card added successfully")
             window.location.reload();
         })

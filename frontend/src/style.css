@@ -19,6 +19,7 @@ body{
     display: block; 
     text-align: left;
     margin: 0.75rem;
+    color:#630973 !important;
 }
 
 .btn-primary {
@@ -86,5 +87,9 @@ thead{
 
 .selected-card {
     border: 0.5rem black solid !important;
+  }
+
+  .modal-title-custom{
+    color:#630973;
   }
   

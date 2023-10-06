@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import axios from 'axios';
-import { Modal,Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import NavBar from "./Navbar";
 
-const Transactions = () => {
-
-    let navigate=useNavigate();
+const Transactions = (props) => {
+    const user = useSelector((state) => state.auth.user);
+    const userid = user.id;
+    let navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('transactions'); // Default active tab is 'transactions'
     const [tableDetails, setTablEDetails] = useState([]);
     const [filteredTable, setFilteredTable] = useState([]);
@@ -17,9 +20,13 @@ const Transactions = () => {
     const [accounts, setAccounts] = useState([]);
     const [selectedAccount, setSelectedAccount] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [showBalance,setShowBalance] = useState(false);
+    const [showBalance, setShowBalance] = useState(false);
+
+    
     useEffect(() => {
-        axios.get("http://localhost:9090/transfer/nithin16/listTrans")
+        // Fetch data when the component mounts
+        
+        axios.get("http://localhost:9090/transfer/" + userid + "/listTrans")
             .then((response) => {
                 const dataWithSNO = response.data.map((item, index) => ({
                     ...item,
@@ -27,14 +34,19 @@ const Transactions = () => {
                 }));
                 setTablEDetails(dataWithSNO);
                 setFilteredTable(dataWithSNO);
-            })
+            });
 
-        axios.get("http://localhost:8082/account/nithin16/listAccounts")
+        axios.get("http://localhost:8082/account/" + userid + "/listAccounts")
             .then((response) => {
-                setAccounts(response.data);
-            })
-
-    })
+                if (response.data.length === 0) {
+                    // If there are no accounts, navigate to the '/addaccount' route
+                    alert("You are a new user, register an account first");
+                    navigate('/addaccount');
+                } else {
+                    setAccounts(response.data);
+                }
+            });
+    }, []); // Add an empty dependency array to run the effect only once on mount
 
     useEffect(() => {
         // Filter the table when filterText changes
@@ -65,23 +77,37 @@ const Transactions = () => {
         setPin(e.target.value);
     };
 
-    const handleCheckBalance = ()=>{
-        if(pin!=1234)
-            setPinError("Invalid PIN");
-        else{
-            setShowBalance(true);
-            setPin("");
+    const handleCheckBalance = () => {
+        const formData = {
+            emailid: user.emailid,
+            security_PIN: pin
         }
+        console.log(formData)
+        // Make an HTTP request to your server (JSON Server in this case) with email and password
+        axios.post('http://localhost:8081/userservice/login', formData).then((response)=>{
+            if (response.data) {
+                setShowBalance(true);
+                setPin("");
+            }
+            
+        }).catch(()=>{
+            setPinError("\Invalid Pin");
+        })
+
+        
     }
 
-    const handleCloseModal = ()=>{
+    const handleCloseModal = () => {
         setShowBalance(false);
         setShowModal(false);
     }
     return (
-        <div className="Transactions container mt-4">
-            <button type="submit" className="btn btn-primary" onClick={()=>navigate('/transfer')}>Make Transfer</button>
-            <button type="submit" className="btn btn-primary" onClick={()=>navigate('/selftransfer')}>Self Transfer</button>
+        <div className="transaction">
+            <NavBar/>
+            <div className="Transactions container mt-4">
+            
+            <button type="submit" className="btn btn-primary" onClick={() => navigate('/transfer')}>Make Transfer</button>
+            <button type="submit" className="btn btn-primary" onClick={() => navigate('/selftransfer')}>Self Transfer</button>
             <Tabs defaultActiveKey="view-transactions" id="myTabs">
                 <Tab eventKey="view-transactions" title="View Transactions">
                     <div className="TransactionsList container mt-4">
@@ -110,8 +136,8 @@ const Transactions = () => {
                                 {filteredTable.map((item) => (
                                     <tr key={item.sno}>
                                         <td>{item.sno}</td>
-                                        <td>{item.accountHolderName}</td>
-                                        <td>{item.accountNo}</td>
+                                        <td>{item.receiverName}</td>
+                                        <td>{item.receiverNo}</td>
                                         <td>{item.amount}</td>
                                         <td>{item.description}</td>
                                         <td>{item.fromAccount}</td>
@@ -152,36 +178,37 @@ const Transactions = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="mb-3 form-group">
-                                <label htmlFor="pin" className="form-label">
-                                    PIN
-                                </label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="pin"
-                                    name="pin"
-                                    value={pin}
-                                    onChange={handlePinChange}
-                                    required
-                                />
-                                {pinError && (
-                                    <div className="text-danger">{pinError}</div>
-                                )}
+                        <label htmlFor="pin" className="form-label">
+                            PIN
+                        </label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="pin"
+                            name="pin"
+                            value={pin}
+                            onChange={handlePinChange}
+                            required
+                        />
+                        {pinError && (
+                            <div className="text-danger">{pinError}</div>
+                        )}
                     </div>
 
                     {
-                        showBalance &&(
+                        showBalance && (
                             <h3 className="Balance-text">Balance: {selectedAccount.accountBalance} Rs. </h3>
                         )
                     }
                 </Modal.Body>
                 <Modal.Footer>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleCloseModal}>Close</button>
-                        <button type="submit" className="btn btn-primary" onClick={handleCheckBalance}>Check Balance</button>
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleCloseModal}>Close</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleCheckBalance}>Check Balance</button>
                 </Modal.Footer>
             </Modal>
         </div>
-
+                <button className="btn btn-primary" onClick={()=>{navigate("/profile")}}>Back to profile page</button>
+        </div>
     );
 }
 

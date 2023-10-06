@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "../style.css";
+import { useSelector } from "react-redux";
 const Transfer = () => {
 
     let navigate=useNavigate();
+    const user = useSelector((state) => state.auth.user);
+    const userid = user.id;
     const [formData, setFormData] = useState({
         receiverNo: '',
         ifscCode: '',
@@ -16,7 +19,7 @@ const Transfer = () => {
 
     useEffect(() => {
         // Fetch recent transactions from your API or use dummy data
-        axios.get("http://localhost:9090/transfer/nithin16/listTrans")
+        axios.get("http://localhost:9090/transfer/" + userid + "/listTrans")
         .then((response) => {
             setRecentTransactions(response.data); // Assuming the response is an array of accounts
         })
@@ -122,6 +125,7 @@ const Transfer = () => {
                         </div>
                     </div>
                 </div>
+                <button className="btn btn-primary" onClick={()=>{navigate("/transactions")}}>Back to transactions page</button>
             </div>
         </div>
     )

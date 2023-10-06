@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { register } from '../Redux/actions1';
 import { Link } from 'react-router-dom';
 import { SHA256 } from 'crypto-js';
-
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
-
+    let navigate=useNavigate();
     let dispatch=useDispatch();
     const generateUPIID = (userIdentifier, vpaDomain) => {
       const uniqueID = Math.random().toString(36).substring(2, 15); // Generate a random alphanumeric string
@@ -91,6 +91,7 @@ const Register = () => {
     // Update the user object with the generated UPI ID
     const updatedUser = { ...user, upi_ID: generatedUPIID };
         try {
+            
             const response = await axios.post('http://localhost:8081/userservice/register',{
             ...updatedUser,
             salt:salt,
@@ -99,14 +100,17 @@ const Register = () => {
         });
           dispatch(register(response.data));
           alert('Registration successful!');
+          
         } catch (error) {
             
             console.error('Registration failed:', error);
           }
+          navigate("/login")
         }
         else {
           alert('Please enter valid details');
         }
+
     }
 
     return (

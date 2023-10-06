@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const SelfTransfer = () => {
     let navigate=useNavigate();
+    const user = useSelector((state) => state.auth.user);
+    const userid = user.id;
+    const email=user.emailid;
     const [accounts, setAccounts] = useState([]);
     const [selectedAccount, setSelectedAccount] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -17,7 +22,7 @@ const SelfTransfer = () => {
     const [showNewAccountModal, setShowNewAccountModal] = useState(false);
     
     useEffect(() => {
-        axios.get("http://localhost:8082/account/nithin16/listAccounts")
+        axios.get("http://localhost:8082/account/" + userid + "/listAccounts")
             .then((response) => {
                 setAccounts(response.data);
                 if (response.data.length > 0) {
@@ -29,7 +34,7 @@ const SelfTransfer = () => {
                 console.log(err);
             });
     }, []);
-
+    const [errors, setErrors] = useState({});
     const otherAccounts = accounts.filter((account) => account !== selectedAccount);
 
     const handleSelectAccount = (account) => {
@@ -47,13 +52,24 @@ const SelfTransfer = () => {
             ...newAccountData,
             [name]: value,
         });
+        
+    };
+    
+
+    
+    const validateForm = () => {
+        const newErrors = {};
+        if (newAccountData.accountNo.length !== 12) {
+            newErrors.accountNo = "Account number must have 12 digits";
+        }
+        // Add more validation rules as needed
+        return newErrors;
     };
     const handlePayment = () => {
-        // console.log(selectedAccount);
-        // console.log(toSelectAccount)
+        
         const transaction_details={
-            accountHolderName:toSelectAccount.user.name,
-            accountNo:toSelectAccount.accountNo,
+            receiverName:toSelectAccount.user.name,
+            receiverNo:toSelectAccount.accountNo,
             description:"Self Transfer",
             fromAccountNo:selectedAccount.accountNo
         }
@@ -62,7 +78,9 @@ const SelfTransfer = () => {
     }
     const handleNewAccountFormSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8082/account/nithin16/addAccount", newAccountData)
+        const newErrors = validateForm();
+        if (Object.keys(newErrors).length === 0) {
+            axios.post("http://localhost:8082/account/"+email+"/addAccount", newAccountData)
             .then((response) => {
                 setAccounts([...accounts, response.data]);
                 setShowNewAccountModal(false);
@@ -71,6 +89,13 @@ const SelfTransfer = () => {
             .catch((err) => {
                 alert("Error while linking account");
             })
+            
+        } else {
+            // Form has validation errors, update the state to show errors
+            setErrors(newErrors);
+        }// console.log(selectedAccount);
+        // console.log(toSelectAccount)
+       
     };
     return (
         <div className="SelfTransfer container text-center">
@@ -126,7 +151,7 @@ const SelfTransfer = () => {
         
         <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
-                <Modal.Title>Select an Account</Modal.Title>
+                <Modal.Title className="modal-title-custom">Select an Account</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {accounts.map((account) => (
@@ -153,7 +178,7 @@ const SelfTransfer = () => {
         {/* New Account Modal */}
         <Modal show={showNewAccountModal} onHide={() => setShowNewAccountModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Link a New Account</Modal.Title>
+                    <Modal.Title className="modal-title-custom">Link a New Account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <form onSubmit={handleNewAccountFormSubmit}>
@@ -168,6 +193,9 @@ const SelfTransfer = () => {
                                         onChange={handleNewAccountFormChange}
                                         required
                                     />
+                                    {errors.accountNo && (
+                                    <div className="text-danger">{errors.accountNo}</div>
+                                )}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="accountBankName">Account Bank Name</label>

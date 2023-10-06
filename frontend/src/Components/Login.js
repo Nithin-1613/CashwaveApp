@@ -30,7 +30,7 @@ const Login = () => {
         const user =response.data;
         console.log(user);
         // Dispatch an action to update the user's authentication state
-        
+        localStorage.setItem('user', JSON.stringify(user));
         dispatch(fetchUserData(formData.emailid, formData.security_PIN));
         navigate("/profile");
       } else {

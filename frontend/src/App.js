@@ -18,13 +18,31 @@ import Details from './Components/Details';
 import Banks from './Components/Banks';
 import Status from './Components/Status';
 import Transactions from './Components/Transactions';
+import Login from './Components/Login';
+import Register from './Components/Registration';
+import Home from './Components/Home';
+import Profile from './Components/Profile';
+import Contact from './Components/contact-us';
+import PrivacyAndCookies from './Components/Privacy ';
+import AddAccount from './Components/AddAccount';
+
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<InsuranceMainPage />} />
+          <Route exact path="/" element={<Home/>} />
+            <Route exact path="/login" element={<Login/>} />
+            <Route exact path="/register" element={<Register/>} />
+            <Route exact path="/profile" element={<Profile/>} />
+            <Route exact path="/contact-us" element={<Contact/>} /> 
+            <Route exact path="/Privacy" element={<PrivacyAndCookies/>} />
+           
+            {/* Add more routes for other pages */}
+            <Route render={() => <div>Page not found</div>} />
+            <Route path="/insurance" element={<InsuranceMainPage />} />
+            <Route path="/addaccount" Component={AddAccount}/>
             <Route path="/linkAccount" element={<LinkAccount />} />
             <Route path="/paymentpage" element={<PaymentPage/>} />
             <Route path='/selftransfer' Component={SelfTransfer}/>
