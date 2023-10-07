@@ -23,6 +23,16 @@ const InsuranceDetails = () => {
     );
   }
 
+  const handlePayment=()=>{
+    const transaction_details={
+      receiverNo:policy.policynumber,
+      receiverName:policy.policyProviderName,
+      description:"Insurance amount",
+      amount:policy.premium
+    }
+    sessionStorage.setItem("transaction_details",JSON.stringify(transaction_details));
+    navigate("/paymentpage");
+  }
   return (
     <div className="container-fluid service-bg vh-100" style={{ backgroundColor: 'rgb(64, 4, 80)' }}>
       <nav className="navbar navbar-light bg-light">
@@ -55,7 +65,7 @@ const InsuranceDetails = () => {
             <p className="policy-text"><strong>Premium Amount:</strong> {policy.premium}</p>
             {/* Add more policy details here */}
             <button
-          onClick={() => navigate('/paymentpage')}
+          onClick={handlePayment}
           className="btn btn-primary mt-4"
           style={{ backgroundColor: 'rgb(87, 5, 110)' }}
         >

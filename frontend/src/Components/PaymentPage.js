@@ -9,10 +9,11 @@ const PaymentPage = () => {
   const email = user.emailid;
   const details = JSON.parse(sessionStorage.getItem('transaction_details'));
   const hasFromAccountNo = details && details.fromAccountNo;
+  const hasAmount=details && details.amount;
   if (!details) {
     navigate('/');
   }
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(hasAmount ? details.amount : 0);
   const [pin, setPin] = useState("");
   const [pinError, setPinError] = useState(null);
 

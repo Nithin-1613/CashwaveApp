@@ -47,7 +47,7 @@ const Profile = () => {
         <div className="card text-center mt-5" style={{ border: 'none' }}>
           <img className="card-img-top mx-auto" src="https://i.pinimg.com/564x/d6/9c/a6/d69ca61689da7c22d563df221eaa7a5b.jpg" alt="Card image cap" style={{ width: '150px', height: '150px' }} />
           <div className="card-body">
-            <a href="#" className="btn btn-primary" style={{ backgroundColor: '#441475', color: 'white' }}>Insurance</a>
+            <a href="/insurance" className="btn btn-primary" style={{ backgroundColor: '#441475', color: 'white' }}>Insurance</a>
           </div>
         </div>
         <link
