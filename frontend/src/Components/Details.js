@@ -11,25 +11,16 @@ const Details = () => {
   const loanDetails = useSelector((state) => state.loanDetails);
 
   const handleContinuePayment = () => {
-    // Validation logic can be added here
-    const transaction_details={
-      receiverNo:loanDetails.loanNumber,
-      receiverName:loanDetails.lender,
-      description:"Loan Emi"
-    }
-    sessionStorage.setItem("transaction_details",transaction_details);
-    // Dispatch an action to set the EMI amount
+   
     dispatch(setEmiAmount(emiAmount));
     console.log(loanDetails);
 
-    // Redirect to the Banks component
-    navigate("/paymentpage"); // Adjust the path as per your routing
+    navigate("/banks");
   };
 
   return (
-    <div>
-      <h2>Details Component</h2>
-      {/* Fetch details from the database */}
+    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+      <h2>Loan Details</h2>
       <p>Selected Lender: {loanDetails.lender}</p>
       <p>Loan Number: {loanDetails.loanNumber}</p>
       <p>Amount Payable: {loanDetails.amountPayable}</p>
@@ -47,3 +38,4 @@ const Details = () => {
 };
 
 export default Details;
+

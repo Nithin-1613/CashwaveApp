@@ -15,33 +15,32 @@ const PayEMI = () => {
 
 
   const handleCheckLoan = async () => {
-    try {
-      const config = {
-        params: { lender: selectedLender }
-      };
-      // console.log(req);
-      console.log(`http://localhost:8080/api/loans/loans/${loanNumber}`);
-      const response = await axios.get(`http://localhost:8080/api/loans/loans/${loanNumber}`, config);
 
-      console.log(response);
-      // console.log(req);
+      try {
+        const response = await axios.get("http://localhost:9091/api/loans/loans");
+        console.log("Hi Response2!");
+        console.log("http://localhost:9091/api/loans/loans");
+        console.log(loanNumber);
+        console.log(response.data);
 
-      if (response.data.length > 0) {
-        // If data is found, navigate to 'details'
-        dispatch(setLoanDetails(response.data[0].lender, response.data[0].loanNumber, response.data[0].amountPayable))
-        navigate("/details");
-      } else {
-        alert('Details Not Found! :(');
+        const matchingLoan = response.data.find(loan => loan.loanNumber === loanNumber && loan.lender === selectedLender);
+        console.log(matchingLoan ? matchingLoan.loanNumber : 'No matching loan found');
+
+        if (matchingLoan) {
+          dispatch(setLoanDetails(matchingLoan.loanNumber, matchingLoan.lender, matchingLoan.amountPayable));
+          navigate("/details");
+        } else {
+          alert('Details Not Found! :(');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while checking the loan.');
       }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred while checking the loan.');
-    }
   };
 
   return (
-    <div className='payemi'>
-      <h2>PayEMI</h2>
+    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+      <h2>Pay EMI</h2>
       <p>Selected Lender: {selectedLender}</p>
       <div>
         <label>Loan Number:</label>

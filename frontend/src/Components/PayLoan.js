@@ -14,10 +14,9 @@ const PayLoan = () => {
   };
 
   return (
-    <div class="d-grid gap-2 col-3 mx-auto">
-      {/* <h2>PayLoan Component</h2> */}
-      <button class="pill-button" onClick={() => handleButtonClicked('AddLoan')}>Add Loan</button>
-      <button class="pill-button" onClick={() => handleButtonClicked('PayEMI')}>Pay EMI</button>
+    <div className="d-grid gap-2 col-3 mx-auto">
+      <button className="pill-button" onClick={() => handleButtonClicked('AddLoan')}>Add Loan</button>
+      <button className="pill-button" onClick={() => handleButtonClicked('PayEMI')}>Pay EMI</button>
     </div>
   );
 };

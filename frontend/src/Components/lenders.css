@@ -1,36 +1,37 @@
-.lenders {
-    margin-top: 20px; /* Adjust the margin size as needed */
-    background-color: #5a287d;
-    color: #fff;
-}
 
-h1{
+.lenders {
+  margin-top: 20px; /* Adjust the margin size as needed */
+  background-color: #5a287d;
   color: #fff;
 }
-  
-  .list-group {
-    text-align: center;
-  }
-  
-  .list-group ul {
-    list-style: none; /* Remove the list item marker (pointer) */
-    padding: 0;
-  }
-  
-  .list-group-item {
-    display: flex;
-    justify-content: center; /* Center the button horizontally */
-    margin: 10px 0; /* Add margin to space the buttons */
-  }
-  
-  .list-group-item button {
-    background-color: #3498db; /* Set the default button background color */
-    color: #fff; /* Set the default button text color */
-    height: 50px; /* Increase the height as needed */
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    width: 25%; /* Adjust the width as needed */
-    transition: background-color 0.3s ease; /* Smooth color transition on hover */
-  }
-  
+
+.lenders h2{
+color: #fff;
+}
+
+.list-group {
+  text-align: center;
+}
+
+.list-group ul {
+  list-style: none; /* Remove the list item marker (pointer) */
+  padding: 0;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin: 10px 0; /* Add margin to space the buttons */
+}
+
+.list-group-item button {
+  background-color: #3498db; /* Set the default button background color */
+  color: #fff; /* Set the default button text color */
+  height: 50px; /* Increase the height as needed */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 25%; /* Adjust the width as needed */
+  transition: background-color 0.3s ease; /* Smooth color transition on hover */
+}
+
