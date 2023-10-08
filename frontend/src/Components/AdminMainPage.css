@@ -1,0 +1,21 @@
+/* 1. Space the list elements by 2px. */
+.list-group-item {
+    margin-bottom: 2px;
+    margin-top: 2px;
+  }
+
+.list-group{
+    margin-top: 10px;
+}
+  
+  /* 3. Change the color of the h2 tag. */
+  .AdminMain h2 {
+    color: #5a287d; /* You can change this color to your preference. */
+  }
+  
+  /* 4. Highlight the list-item on hover. */
+  .list-group-item:hover {
+    background-color: #F2F2F2; /* You can change this color to your preference. */
+    cursor: pointer;
+  }
+  
