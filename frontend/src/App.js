@@ -25,6 +25,8 @@ import Profile from './Components/Profile';
 import Contact from './Components/contact-us';
 import PrivacyAndCookies from './Components/Privacy ';
 import AddAccount from './Components/AddAccount';
+import AdminMainPage from './Components/AdminMainPage';
+import UserDetails from './Components/UserDetails';
 
 function App() {
   return (
@@ -57,6 +59,8 @@ function App() {
             <Route path="/banks" Component={Banks}/>
             <Route path="/status" Component={Status}/>
             <Route path="/transactions" Component={Transactions}/>
+            <Route path="/admin" element={<AdminMainPage/>} />
+            <Route path="/userDetails/:id" element={<UserDetails />}/>
           </Routes>
         </BrowserRouter>
       </div>

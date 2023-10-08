@@ -85,4 +85,9 @@ export const setEmiAmount = (emiAmount) => ({
   payload: emiAmount,
 });
 
-
+export const setid = (id) => {
+  return {
+    type: 'SET_ID',
+    payload: id,
+  };
+};
