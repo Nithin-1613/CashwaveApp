@@ -17,9 +17,9 @@ const PayEMI = () => {
   const handleCheckLoan = async () => {
 
       try {
-        const response = await axios.get("http://localhost:9091/api/loans/loans");
+        const response = await axios.get("http://localhost:9091/loans/loans");
         console.log("Hi Response2!");
-        console.log("http://localhost:9091/api/loans/loans");
+        console.log("http://localhost:9091/loans/loans");
         console.log(loanNumber);
         console.log(response.data);
 

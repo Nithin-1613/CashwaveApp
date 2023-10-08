@@ -45,7 +45,7 @@ export const login = (userData) => {
             // Make an API call to authenticate the user based on email and password
             
               
-            const response = await axios.post('http://localhost:8081/userservice/login',{emailid:emailid,security_PIN:security_PIN,});
+            const response = await axios.post('http://localhost:8081/users/login',{emailid:emailid,security_PIN:security_PIN,});
           
             
             console.log(response);

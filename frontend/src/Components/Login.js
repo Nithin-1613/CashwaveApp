@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     try {
       // Make an HTTP request to your server (JSON Server in this case) with email and password
-      const response = await axios.post('http://localhost:8081/userservice/login', formData, {
+      const response = await axios.post('http://localhost:8081/users/login', formData, {
         headers: {
           'Content-Type': 'application/json',
         },

@@ -98,7 +98,7 @@ const LinkAccount = () => {
     try {
       // Check if the policy already exists
       const response = await axios.get(
-        `http://localhost:9092/api/policies?policynumber=${policy.policynumber}`
+        `http://localhost:9092/insurances?policynumber=${policy.policynumber}`
       );
   
       // Check if a policy with the same policy number exists
@@ -113,7 +113,7 @@ const LinkAccount = () => {
       }
   
       // If no existing policy was found and no validation errors, proceed to link the account
-      const linkAccountResponse = await axios.post('http://localhost:9092/api/policies/link-account', {
+      const linkAccountResponse = await axios.post('http://localhost:9092/insurances/link-account', {
         ...policy,
         startdate: formattedStartDate,
         enddate: formattedEndDate,

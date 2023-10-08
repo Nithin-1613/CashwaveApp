@@ -27,7 +27,7 @@ const AddLoan = () => {
     }
 
     try {
-      const response = await axios.get('http://localhost:9091/api/loans/loans');
+      const response = await axios.get('http://localhost:9091/loans/loans');
       const existingLoan = response.data.find(
         (loan) =>
           loan.lender === selectedLender &&
@@ -39,7 +39,7 @@ const AddLoan = () => {
         return;
       }
 
-      await axios.post('http://localhost:9091/api/loans', {
+      await axios.post('http://localhost:9091/loans', {
         lender: selectedLender,
         loanNumber,
         amountPayable
