@@ -19,10 +19,11 @@ const Register = () => {
         dateofbirth: "",
         aadharcardnumber: "",
         security_PIN: "",
-        upi_ID: ""
+        upi_ID:"",
+        block:"",
     });
 
-    const { mobilenumber, emailid, name, dateofbirth, aadharcardnumber, security_PIN, upi_ID } = user;
+    const { mobilenumber, emailid, name, dateofbirth,aadharcardnumber,security_PIN, upi_ID,block } = user;
 
 
     //validation
@@ -30,6 +31,8 @@ const Register = () => {
     const [isAadharValid, setIsAadharValid] = useState(true);
     const [isMobileValid, setIsMobileValid] = useState(true);
     const [isPINValid, setIsPasswordValid] = useState(true);
+    const [isEmailUnique, setIsEmailUnique] = useState(true);
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const validateEmail = (emailid) => {
         const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
         const isValidEmail = pattern.test(emailid);
@@ -80,32 +83,49 @@ const Register = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         if (isEmailValid && isAadharValid && isMobileValid && isPINValid) {
-
-            const salt = generateSalt();
-            const hashedPassword = hashPassword(user.security_PIN, salt);
-
-            console.log('Salt:', salt);
-            console.log('Hashed Password:', hashedPassword);
-            const generatedUPIID = generateUPIID(user.aadharcardnumber, 'natwest'); // Replace 'yourbankname' with your actual VPA domain
-
-            // Update the user object with the generated UPI ID
-            const updatedUser = { ...user, upi_ID: generatedUPIID };
-            try {
-
-                const response = await axios.post('http://localhost:8081/users/register', {
-                    ...updatedUser,
-                    salt: salt,
-                    security_PIN: hashedPassword,
-
-                });
-                dispatch(register(response.data));
-                alert('Registration successful!');
-
-            } catch (error) {
-
-                console.error('Registration failed:', error);
+            const dob = new Date(user.dateofbirth);
+            const currentDate = new Date();
+            const age = currentDate.getFullYear() - dob.getFullYear();
+        
+            // Check if the user is at least 16 years old
+            if (age < 16) {
+              alert('You must be at least 16 years old to register.');
+              return; // Don't proceed with registration
             }
-            navigate("/login")
+          const salt = generateSalt();
+          const hashedPassword = hashPassword(user.security_PIN, salt);
+    
+        const UPIID = generateUPIID( user.aadharcardnumber,'natwest'); // Replace 'yourbankname' with your actual VPA domain
+        const updatedUser = { ...user, salt:salt,
+            security_PIN:hashedPassword,
+            upi_ID: UPIID,
+            block:0 };
+    // Update the user object with the generated UPI ID
+   
+        try {
+            const resp = await axios.get(
+                `http://localhost:8081/userservice/checkEmail?emailid=${updatedUser.emailid}`
+              );
+              if (!resp.data) {
+                const existingemail = resp.data.find(
+                  (Emailcred) => Emailcred.emailid === updatedUser.emailid
+                );
+                if (existingemail) {
+                  alert('Account Already Linked with this email.');
+                  return;
+                }
+              }
+            const response = await axios.post('http://localhost:8081/userservice/register',updatedUser);
+          dispatch(register(response.data));
+          alert('Registration successful!');
+          navigate('/');
+          
+        } catch (error) {
+            
+            console.error('Registration failed:', error);
+            alert('Account Linking failed. Please try again.');
+          }
+         
         }
         else {
             alert('Please enter valid details');

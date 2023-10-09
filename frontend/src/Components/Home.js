@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Contact from './contact-us';
 import './Navbar.css';
-import Register from './Registration'
+import Register from './Registration';
+import ForgotPassword from './Forgotpassword';
 
 const Home = () => {
   return (

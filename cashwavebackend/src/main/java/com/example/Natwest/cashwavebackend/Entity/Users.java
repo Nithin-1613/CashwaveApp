@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -21,6 +22,16 @@ public class Users {
 
     private String id;
     private String name;
+    private String mobilenumber;
+    private String emailid;
+    private String dateofbirth;
+    private String aadharcardnumber;
+    private String security_PIN;
+    private String  salt;
+    private String upi_ID;
+    private String block;
+    private String resetToken;
+    private Date resetTokenExpiryDate;
 
 
 }
