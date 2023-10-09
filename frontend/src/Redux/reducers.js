@@ -1,7 +1,12 @@
 // redux/reducers/authReducer.js
+import {
+  INITIATE_PASSWORD_RESET_SUCCESS,
+  INITIATE_PASSWORD_RESET_FAILURE,
+} from './actions1';
 const user = JSON.parse(localStorage.getItem('user'));
 const initialState = {
     user:user||null,
+    message:null,
     error: null,
   };
   
@@ -23,6 +28,18 @@ const initialState = {
           user: null,
           error: action.payload,
         };
+        case INITIATE_PASSWORD_RESET_SUCCESS:
+      return {
+        ...state,
+        message: action.message,
+        error: null,
+      };
+    case INITIATE_PASSWORD_RESET_FAILURE:
+      return {
+        ...state,
+        message: null,
+        error: action.error,
+      };
       default:
         return state;
     }
