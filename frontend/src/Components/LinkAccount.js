@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { linkAccountSuccess, linkAccountFail } from '../Redux/actions';
 import './LinkAccount.css';
 import { useNavigate } from 'react-router-dom';
+import CommonNavbar from './CommonNavbar';
+import Footer from './Footer';
 
 const LinkAccount = () => {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const LinkAccount = () => {
     emailid: '',
     startdate: new Date(),
     enddate: new Date(),
-  
+
   };
 
   const [policy, setPolicy] = useState(initialPolicyState);
@@ -70,37 +72,37 @@ const LinkAccount = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-  
+
     const validationMessages = {};
-  
+
     if (!validateEmail(policy.emailid)) {
       validationMessages.emailid = 'Enter a valid email address.';
     }
-  
+
     if (!validateEndDate(policy.enddate)) {
       validationMessages.enddate = 'End date must have a minimum 1-year gap from the start date.';
     }
-  
+
     if (!validatePremium(policy.premium)) {
       validationMessages.premium = 'Premium amount should be less than or equal to the policy amount.';
     }
-  
+
     // Check if any validation errors exist
     if (Object.keys(validationMessages).length > 0) {
       setValidationMessages(validationMessages);
       return; // Prevent form submission
     }
-  
+
     // Format startdate and enddate
     const formattedStartDate = policy.startdate.toISOString();
     const formattedEndDate = policy.enddate.toISOString();
-  
+
     try {
       // Check if the policy already exists
       const response = await axios.get(
         `http://localhost:9092/insurances?policynumber=${policy.policynumber}`
       );
-  
+
       // Check if a policy with the same policy number exists
       if (response.data && response.data.length > 0) {
         const existingPolicy = response.data.find(
@@ -111,14 +113,14 @@ const LinkAccount = () => {
           return;
         }
       }
-  
+
       // If no existing policy was found and no validation errors, proceed to link the account
       const linkAccountResponse = await axios.post('http://localhost:9092/insurances/link-account', {
         ...policy,
         startdate: formattedStartDate,
         enddate: formattedEndDate,
       });
-  
+
       dispatch(linkAccountSuccess(linkAccountResponse.data));
       navigate('/');
       setSuccessMessage('Account Linking Successful');
@@ -130,156 +132,161 @@ const LinkAccount = () => {
   };
 
   return (
-    <div className="container-reg">
-      <div className="row formrow flex-grow">
-        <div id="formcontent" className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center">Link Account</h2>
-          <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor="policyProviderName" className="form-label login-label">
-                Policy Provider Name
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter your policy provider"
-                name="policyProviderName"
-                value={policy.policyProviderName}
-                onChange={(e) => onInputChange(e)}
-                required
-              />
-            </div>
+    <div >
+      <CommonNavbar/>
+      <div className="container-reg">
 
-            <div className="mb-3">
-              <label htmlFor="policynumber" className="form-label login-label">
-                Policy Number
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter your policy number"
-                name="policynumber"
-                value={policy.policynumber}
-                onChange={(e) => onInputChange(e)}
-                required
-              />
-            </div>
+        <div className="row  flex-grow">
+          <div id="formcontent" className="col-md-6 formrow offset-md-3 border rounded p-4 mt-2 shadow">
+            <h2 className="text-center">Link Account</h2>
+            <form onSubmit={(e) => onSubmit(e)}>
+              <div className="mb-3">
+                <label htmlFor="policyProviderName" className="form-label login-label">
+                  Policy Provider Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your policy provider"
+                  name="policyProviderName"
+                  value={policy.policyProviderName}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                />
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="policytype" className="form-label login-label">
-                Policy Type
-              </label>
-              <select
-                className="form-select"
-                name="policytype"
-                value={policy.policytype}
-                onChange={(e) => onInputChange(e)}
-                required
-              >
-                <option value="">Select Policy Type</option>
-                <option value="Health">Health</option>
-                <option value="Car">Car</option>
-                <option value="Bike">Bike</option>
-                <option value="Life">Life</option>
-              </select>
-            </div>
+              <div className="mb-3">
+                <label htmlFor="policynumber" className="form-label login-label">
+                  Policy Number
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your policy number"
+                  name="policynumber"
+                  value={policy.policynumber}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                />
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="policyamount" className="form-label login-label">
-                Policy Amount
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the policy amount"
-                name="policyamount"
-                value={policy.policyamount}
-                onChange={(e) => onInputChange(e)}
-                required
-              />
-            </div>
+              <div className="mb-3">
+                <label htmlFor="policytype" className="form-label login-label">
+                  Policy Type
+                </label>
+                <select
+                  className="form-select"
+                  name="policytype"
+                  value={policy.policytype}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                >
+                  <option value="">Select Policy Type</option>
+                  <option value="Health">Health</option>
+                  <option value="Car">Car</option>
+                  <option value="Bike">Bike</option>
+                  <option value="Life">Life</option>
+                </select>
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="premium" className="form-label login-label">
-                Premium Amount
-              </label>
-              <input
-                type="text"
-                className={`form-control ${validationMessages.premium ? 'is-invalid' : ''}`}
-                placeholder="Enter the premium amount"
-                name="premium"
-                value={policy.premium}
-                onChange={(e) => onInputChange(e)}
-                required
-              />
-              {validationMessages.premium && (
-                <div className="invalid-feedback">{validationMessages.premium}</div>
-              )}
-            </div>
+              <div className="mb-3">
+                <label htmlFor="policyamount" className="form-label login-label">
+                  Policy Amount
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter the policy amount"
+                  name="policyamount"
+                  value={policy.policyamount}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                />
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="emailid" className="form-label login-label">
-                Email ID
-              </label>
-              <input
-                type="email"
-                className={`form-control ${validationMessages.emailid ? 'is-invalid' : ''}`}
-                placeholder="Enter your email ID"
-                name="emailid"
-                value={policy.emailid}
-                onChange={(e) => onInputChange(e)}
-                required
-              />
-              {validationMessages.emailid && (
-                <div className="invalid-feedback">{validationMessages.emailid}</div>
-              )}
-            </div>
+              <div className="mb-3">
+                <label htmlFor="premium" className="form-label login-label">
+                  Premium Amount
+                </label>
+                <input
+                  type="text"
+                  className={`form-control ${validationMessages.premium ? 'is-invalid' : ''}`}
+                  placeholder="Enter the premium amount"
+                  name="premium"
+                  value={policy.premium}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                />
+                {validationMessages.premium && (
+                  <div className="invalid-feedback">{validationMessages.premium}</div>
+                )}
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="startdate" className="form-label login-label">
-                Policy Start Date
-              </label>
-              <input
-                type="date"
-                className="form-control"
-                name="startdate"
-                value={policy.startdate.toISOString().substr(0, 10)}
-                onChange={(e) => onInputChange(e)}
-                required
-              />
-            </div>
+              <div className="mb-3">
+                <label htmlFor="emailid" className="form-label login-label">
+                  Email ID
+                </label>
+                <input
+                  type="email"
+                  className={`form-control ${validationMessages.emailid ? 'is-invalid' : ''}`}
+                  placeholder="Enter your email ID"
+                  name="emailid"
+                  value={policy.emailid}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                />
+                {validationMessages.emailid && (
+                  <div className="invalid-feedback">{validationMessages.emailid}</div>
+                )}
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="enddate" className="form-label login-label">
-                Policy End Date
-              </label>
-              <input
-                type="date"
-                className={`form-control ${validationMessages.enddate ? 'is-invalid' : ''}`}
-                name="enddate"
-                value={policy.enddate.toISOString().substr(0, 10)}
-                onChange={(e) => onInputChange(e)}
-                required
-              />
-              {validationMessages.enddate && (
-                <div className="invalid-feedback">{validationMessages.enddate}</div>
-              )}
-            </div>
+              <div className="mb-3">
+                <label htmlFor="startdate" className="form-label login-label">
+                  Policy Start Date
+                </label>
+                <input
+                  type="date"
+                  className="form-control"
+                  name="startdate"
+                  value={policy.startdate.toISOString().substr(0, 10)}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="enddate" className="form-label login-label">
+                  Policy End Date
+                </label>
+                <input
+                  type="date"
+                  className={`form-control ${validationMessages.enddate ? 'is-invalid' : ''}`}
+                  name="enddate"
+                  value={policy.enddate.toISOString().substr(0, 10)}
+                  onChange={(e) => onInputChange(e)}
+                  required
+                />
+                {validationMessages.enddate && (
+                  <div className="invalid-feedback">{validationMessages.enddate}</div>
+                )}
+              </div>
 
 
-            <button type="submit" className="btn-submit">
-              Link Account
-            </button>
-            <button type="button" onClick={() => navigate("/")} className="btn-submit mx-2">
-              Cancel
-            </button>
-          </form>
+              <button type="submit" className="btn-submit">
+                Link Account
+              </button>
+              <button type="button" onClick={() => navigate("/insurance")} className="btn-submit mx-2">
+                Cancel
+              </button>
+            </form>
 
-          {successMessage && (
-            <div className="alert alert-success mt-3">{successMessage}</div>
-          )}
+            {successMessage && (
+              <div className="alert alert-success mt-3">{successMessage}</div>
+            )}
+          </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

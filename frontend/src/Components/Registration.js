@@ -5,6 +5,8 @@ import { register } from '../Redux/actions1';
 import { Link } from 'react-router-dom';
 import { SHA256 } from 'crypto-js';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
+import CommonNavbar from './CommonNavbar';
 const Register = () => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
@@ -104,7 +106,7 @@ const Register = () => {
    
         try {
             const resp = await axios.get(
-                `http://localhost:8081/userservice/checkEmail?emailid=${updatedUser.emailid}`
+                `http://localhost:8081/users/checkEmail?emailid=${updatedUser.emailid}`
               );
               if (!resp.data) {
                 const existingemail = resp.data.find(
@@ -115,7 +117,7 @@ const Register = () => {
                   return;
                 }
               }
-            const response = await axios.post('http://localhost:8081/userservice/register',updatedUser);
+            const response = await axios.post('http://localhost:8081/users/register',updatedUser);
           dispatch(register(response.data));
           alert('Registration successful!');
           navigate('/');
@@ -135,21 +137,9 @@ const Register = () => {
 
     return (
         // register form
-        <div>
-            <nav class="navbar">
-                <div class="navbar-logo">
-                    <a href="#">
-                        <img src="https://www.fintechfutures.com/files/2023/02/Natwest.png" width="50" height="50" alt="Brand Logo" />
-                    </a>
-                </div>
-                <div class="navbar-links">
-                    <a href="/">Home</a>
-
-                </div>
-
-
-            </nav>
-            <div className="container">
+        <div id="root">
+            <CommonNavbar/>
+            <div className="container registercontainer">
                 <div className='row'>
                     <div id="formcontent" className='col-md-5 offset-md-3 border rounded  shadow'>
                         <div className="text-center">
@@ -230,12 +220,7 @@ const Register = () => {
 
 
             </div>
-            <link
-                rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-            />
-            
-
+            <Footer/> 
         </div>
     )
 }

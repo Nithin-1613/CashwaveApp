@@ -1,6 +1,5 @@
 body{
-    background-color: #630973 !important;
-    color: white;
+    background-color: #5a287d !important;
 }
 
 .formrow{
@@ -8,7 +7,7 @@ body{
     border-radius: 1rem;
     padding: 2rem;
     color: #630973 !important;
-    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 .form-group{
@@ -23,16 +22,19 @@ body{
 }
 
 .btn-primary {
-    background-color: rgb(80, 0, 80) !important; /* Set the button background color to purple */
+    background-color: #420f5f !important; /* Set the button background color to purple */
     color: white; /* Set the text color to white */
     margin: 1.5rem;
     font-weight: bolder !important;
     border: none !important;
-    padding: 0.5rem !important;
+    padding: 1rem !important;
+    /* padding-left: 2rem !important;
+    padding-right: 2rem !important; */
+    border-radius: 100px; /* This value can be adjusted as needed for the desired pill shape */
 }
 
 .recentTransactions{
-    color: white !important;
+    color:white !important;
 }
 
 .button-block{
@@ -55,7 +57,7 @@ body{
 }
 
 .badge{
-    background-color: #630973;
+    background-color: #420f5f;
     border: 0.1rem white dashed;
 }
 
@@ -92,4 +94,65 @@ thead{
   .modal-title-custom{
     color:#630973;
   }
+  
+  input{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .card{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+  }
+  textarea{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+.Transactions{
+    margin-bottom: 3rem;
+    min-height: 100vh;
+}
+
+.table{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    
+}
+
+.addaccount{
+    min-height: 80vh;
+}
+
+.profilecontainer{
+    min-height: 80vh;
+    margin-top: 5rem;
+}
+
+
+.login-container{
+    min-height: 90vh;
+    height: max-content;
+    margin-top: 5rem;
+}
+
+/* CSS for styling tab titles in Tabs component */
+#myTabs .nav-link {
+    color: white !important; /* Tab titles in white */
+    background-color: transparent; /* Transparent background by default */
+    border: none; /* Remove border */
+  }
+  
+  #myTabs .nav-item.show .nav-link,
+  #myTabs .nav-link.active {
+    color: #420f5f !important; /* White text color when tab is active */
+    background-color: white !important; /* Purple background when tab is active */
+    border: none; /* Remove border when tab is active */
+  }
+
+  .SelfTransfer > .container >h1{
+    font-size: 3rem;
+  }
+
+  .table{
+    border-radius: 10px !important;
+  }
+  
   

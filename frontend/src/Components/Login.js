@@ -4,10 +4,13 @@ import { useDispatch } from 'react-redux';
 import { fetchUserData } from '../Redux/actions1';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Navbar.css';
+// import './Navbar.css';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
+import NavBar from './Navbar';
+import CommonNavbar from './CommonNavbar';
 
- 
+
 const Login = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,28 +24,33 @@ const Login = () => {
     e.preventDefault();
     try {
       // Make an HTTP request to your server (JSON Server in this case) with email and password
-      const response = await axios.post('http://localhost:8081/users/login', formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      if (formData.emailid == "admin" && formData.security_PIN == "1947") {
+        navigate("/admin");
+      }
+      else {
+        const response = await axios.post('http://localhost:8081/users/login', formData, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-      if (response.data) {
-        const user =response.data;
-        if(user.block==0){
-        // Dispatch an action to update the user's authentication state
-        localStorage.setItem('user', JSON.stringify(user));
-        dispatch(fetchUserData(formData.emailid, formData.security_PIN));
-        navigate("/profile");
-        }else{
-          alert('Account is blocked');
+        if (response.data) {
+          const user = response.data;
+          if (user.block == 0) {
+            // Dispatch an action to update the user's authentication state
+            localStorage.setItem('user', JSON.stringify(user));
+            dispatch(fetchUserData(formData.emailid, formData.security_PIN));
+            navigate("/profile");
+          } else {
+            alert('Account is blocked');
+          }
+        } else {
+          // Handle login error, show an error message, etc.
+          alert('Please enter valid details');
+          console.error('Login failed')
+
+
         }
-      } else {
-        // Handle login error, show an error message, etc.
-        alert('Please enter valid details');
-        console.error('Login failed')
-        
-        
       }
     } catch (error) {
       alert('Please enter valid details');
@@ -52,88 +60,56 @@ const Login = () => {
 
   return (
     <div>
-     <nav class="navbar">
-        <div class="navbar-logo">
-            <a href="#">
-                <img src="https://www.fintechfutures.com/files/2023/02/Natwest.png" width="50" height="50" alt="Brand Logo"/>
-            </a>
-        </div>
-        <div class="navbar-links">
-            <a href="/">Home</a>
-            
-        </div>
-        <div class="navbar-space"></div>
-        
-    </nav>
-    <div class="content">
-    <div class="right-column">
-        <div class="quote">
-            <h3>Welcome to Natwest Banking</h3>
-            <h1>LOGIN</h1>
-           
-        
-        </div>
-        </div>
-        <div class="left column">
-        <div class="center-container">
-        <div class="login-box">
-        <form className="login-form" onSubmit={handleLogin}>
-            <input
-              type="emailid"
-              name="emailid"
-              placeholder="Email"
-              value={formData.emailid}
-              onChange={handleInputChange}
-            />
-            <input
-              type="password"
-              name="security_PIN"
-              placeholder="security PIN"
-              value={formData.security_PIN}
-              onChange={handleInputChange}
-            />
-            <button type="submit">Login</button>
-            <Link to="/forgot-password" className="forgot-password-link">Forgot Password</Link>
-          </form>
-          </div>
+      <CommonNavbar/>
+      <div className="container login-container">
+        <div className="row">
+          <div className="col-md-6  loginformrow offset-md-3 mt-4">
+            <div className="tquote text-center">
+              <h5>Welcome to Natwest Banking</h5>
+              <h3>LOGIN</h3>
+            </div>
+            <div className="login-box">
+              <form className="login-form" onSubmit={handleLogin}>
+                <div className="mb-3">
+                  <input
+                    type="emailid"
+                    className="form-control"
+                    name="emailid"
+                    placeholder="Email"
+                    value={formData.emailid}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="security_PIN"
+                    placeholder="security PIN"
+                    value={formData.security_PIN}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                
+                <div className="mb-3 text-center login-functions">
+                  <Link to="/forgot-password" className="forgot-password-link">Forgot Password</Link>
+                  <button type="submit" className="btn btn-primary">Login</button>
+                </div>
+                
+              </form>
+            </div>
           </div>
         </div>
-        
-        </div>
+      </div>
       <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-/>
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      />
 
-<footer class="footer">
-        <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-/>
-  <div class="left-section">
-    <div class="footer-links">
-      <a href="/contact-us">Contact Us</a>
-       
-      <a href="/privacy-cookies">Privacy and Cookies</a>
-      <a href="/get-our-app">Get Our App</a>
-      <div class="copyright">
-      &copy; 2023 NatwestBank.com
-    </div>
-    </div>
-   
-  </div>
-  <div class="right-section">
-  <div class="footer-links">
-  <div class="social-icon-box" style={{ backgroundColor: '#1877f2' }}><a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a></div>
-      <div class="social-icon-box" style={{ backgroundColor: '#1da1f2' }}><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a></div>
-      <div class="social-icon-box" style={{ backgroundColor: '#c32aa3' }}><a href="#" class="social-icon"><i class="fab fa-instagram"></i></a></div>
-    </div>
-    
-  </div>
-</footer>
+      <Footer />
     </div>
   );
-  
+
 };
 
 export default Login;

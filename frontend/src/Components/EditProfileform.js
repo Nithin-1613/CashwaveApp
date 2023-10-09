@@ -42,7 +42,7 @@ const EditProfileForm = () => {
       const updatedFormData = { ...formData, security_PIN: hashedPIN,salt:salt };
 
       const updatedUser = await axios.put(
-        `http://localhost:8081/userservice/update/${user.id}`,
+        `http://localhost:8081/users/update/${user.id}`,
         updatedFormData
       );
 

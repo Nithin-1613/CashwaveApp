@@ -4,7 +4,9 @@ import "./addloan.css"
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 // import { setLoanDetails } from '../redux/actions'; 
-import axios from 'axios'; 
+import axios from 'axios';
+import CommonNavbar from './CommonNavbar';
+import Footer from './Footer';
 
 const AddLoan = () => {
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ const AddLoan = () => {
           loan.lender === selectedLender &&
           loan.loanNumber === loanNumber
       );
-        console.log(response.data)
+      console.log(response.data)
       if (existingLoan) {
         alert('Record already exists.');
         return;
@@ -43,7 +45,7 @@ const AddLoan = () => {
         lender: selectedLender,
         loanNumber,
         amountPayable
-      }); 
+      });
 
       navigate("/payloan");
     } catch (error) {
@@ -53,28 +55,36 @@ const AddLoan = () => {
   };
 
   return (
-    <div id="formcontent-addloan" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
-      <h2>Add Loan Details</h2>
-      <p>Selected Lender: {selectedLender}</p>
-      <div>
-        <label>Loan Number</label>
-        <input
-          type="text"
-          value={loanNumber}
-          onChange={(e) => setLoanNumber(e.target.value)}
-        />
+    <div className='addloan'>
+      <CommonNavbar />
+      <div className='container mt-4 addloancontainer'>
+        <div className='row justify-content-center'>
+          <div id="formcontent-addloan" className='col-md-6 '>
+            <h2>Add Loan Details</h2>
+            <p>Selected Lender: {selectedLender}</p>
+            <div>
+              <label>Loan Number</label>
+              <input
+                type="text"
+                value={loanNumber}
+                onChange={(e) => setLoanNumber(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Amount Payable</label>
+              <input
+                type="text"
+                value={amountPayable}
+                onChange={(e) => setAmountPayable(e.target.value)}
+              />
+            </div>
+            <button onClick={handleAddLoan}>Add Loan</button>
+          </div>
+        </div>
+        </div>
+        <Footer />
       </div>
-      <div>
-        <label>Amount Payable</label>
-        <input
-          type="text"
-          value={amountPayable}
-          onChange={(e) => setAmountPayable(e.target.value)}
-        />
-      </div>
-      <button onClick={handleAddLoan}>Add Loan</button>
-    </div>
-  );
+      );
 };
 
-export default AddLoan;
+      export default AddLoan;

@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #441475; /* Adjust background color as needed */
+    background-color: #420f5f; /* Adjust background color as needed */
     color: white; /* Adjust text color as needed */
 }
 
@@ -45,11 +45,12 @@
     display: flex;
     align-items: center;
     background-color: #6f359b;
-    
+    height: 40vh;
   }
   
   .left-column {
     flex: 1;
+    height: 100%;
   }
   
   .right-column {
@@ -59,20 +60,23 @@
   
   /* Additional styling for quote and buttons */
   .quote {
-    color:white;
+    color:white !important;
     margin-bottom: 20px; /* Adjust margin as needed */
     font-size: 24px; /* Increase font size */
     font-weight: bold; /* Make text bold */
     font-style: italic; /* Adjust margin as needed */
   }
   
+  .tquote{
+    color:#420f5f;
+  }
   .bottom-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    
+    background-color: white;
   }
   .card a {
     text-decoration: none;
@@ -111,65 +115,11 @@
   }
   /* Your CSS file */
 
-.footer {
-    background-color: #41076d; /* Background color for the footer */
-    color: white; /* Text color for the footer */
-    display: flex;
-    justify-content: space-between; /* Space between left and right sections */
-    padding: 20px; /* Padding for the footer */
-    position: fixed;
-    bottom: 0; /* Stick to the bottom of the viewport */
-    width: 100%;
-  }
-  .copyright {
-    font-size: 12px; /* Adjust font size as needed */
-     }
-  
-     .left-section,
-     .right-section {
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-     }
-     
-  
-  .footer-links a {
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
-    font-size: 20px; /* Space between links */
-  }
-  .footer-links a + a {
-    margin-left: 300px; /* Adjust the left margin to increase space */
-  }
-  
-  .social-icon-box {
-    display: inline-block;
-    border: 2px solid white; /* Border around the icon box */
-    align-items: center; /* Vertically center the icon */
-  justify-content: center;
-  border: 2px solid white;
-    border-radius: 20px;
-    padding: 10px; /* Adjust padding as needed */
-    margin-right: 20px; /* Space between icon boxes */
-    width: 40px; /* Set a fixed width for the boxes (adjust as needed) */
-    height: 40px;  
-}
-  
-  /* Style the social icons inside the boxes */
-  .social-icon {
-    color: white;
-    text-decoration: none;
-    font-size: 30px; /* Adjust the font size for social icons */
-  }
- 
+
   
   
   
-  .right-section {
-    text-align: right;
-    
-  }
+  
   /* Style for the login box */
   .center-container {
     display: flex;
@@ -177,64 +127,33 @@
     align-items: center; /* Center vertically */
     height: 100vh; /* Make the container cover the entire viewport height */
   }
-.login-box {
-    width: 500px; 
-    height: 200px;
-    border: 1px solid #ccc;
-    padding: 30px; /* Increase the padding to make the box larger */
-    background-color: #d3d0d5; /* Background color for the box */
-    border-radius: 10px; /* Rounded corners for the box */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center the content inside the box */
-    margin-right: 300px; 
-}
-  .login-box input[type="emailid"],
-.login-box input[type="password"] {
-    height: 40px; /* Increase input field height */
-    font-size: 18px; /* Increase font size */
-    padding: 10px; /* Add padding to input fields */
-    margin-bottom: 10px; /* Add margin to separate the inputs */
-    display: block; /* Display each input on a new line */
-    width: 100%; /* Add margin to separate the inputs */
-}
-.login-box h3 {
-    font-size: 28px; 
-    margin-bottom:20px;/* Adjust the font size as needed */
-  }
-  
-  .login-box h1 {
-    font-size: 48px;
-    margin-bottom: 20px; /* Adjust the font size as needed */
-  }
-  
-  .login-form {
-    font-size: 20px;
-    margin-bottom: 20px; /* Adjust the font size as needed */
-  }
-  
-  /* Style for the login button */
-  .login-box button[type="submit"] {
-    background-color: #4e0898; /* Background color for the button (blue) */
-    color: #fff; /* Text color for the button (white) */
-    padding: 12px 24px; /* Increase padding to make the button larger */
-    border: none;
-    border-radius: 5px; /* Rounded corners for the button */
-    cursor: pointer;
-    font-size: 20px; /* Increase font size */
-    transition: background-color 0.3s; /* Add a smooth hover effect */
-  }
-  
-  .login-box button[type="submit"]:hover {
-    background-color: #0056b3; /* Change the button color on hover */
-  }
-  
   /* Add margin to the bottom of the form content */
 #formcontent {
     margin-bottom: 80px; /* Adjust the margin as needed */
   }
   
-  
-  
+.quote{
+  color:#5a287d;
+}
+  .loginformrow{
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    padding-bottom: 0.25rem;
+    color: #630973 !important;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 5rem;
+  }
+.login-form{
+  margin-top: 2rem;
+  width:80%;
+  margin-left: 3rem;
+}
+.login-functions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
   /* Header styling */
   .container h1 {
     font-size: 24px;
@@ -282,32 +201,6 @@
     flex-grow: 1;
   }
   
-  .footer-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  
-  .footer-title {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 10px;
-    text-decoration: none !important;
-    text-align: left;
-    color: white;
-  }
-  
-  .footer-title::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-  }
-  
   .btn-floating {
     font-size: 1.25rem;
     margin: 5px;
@@ -321,4 +214,171 @@
   }
   
   /* Add more responsive styling as needed */
+  .registercontainer{
+    margin-left:6rem;
+  }
+
   
+  .footer {
+    display: flex;
+    background-color: #420f5f;
+    color: white;
+    padding: 20px 0;
+    align-items: center;
+    
+   }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: white;
+    margin: 0 20px;
+  }
+  
+  .footer-line {
+    border: 0.25rem solid white;
+    width: 80%;
+    margin: 10px auto;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .footer-copyright {
+    font-size: 14px;
+  }
+  
+  .footer-icons {
+    display: flex;
+  }
+  
+  .footer-icon {
+    font-size: 20px;
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-icon:hover {
+    color: #1da1f2; /* Change color on hover */
+  }
+
+ .social-icon-box{
+  border-radius: 1rem;
+  margin-left:0.25rem;
+ }
+
+
+
+.footerlinkfonts a {
+  text-decoration: none;
+  color: white;
+  margin: 0 5rem /* Add margin to create space horizontally */
+}
+
+/* Navbar.css */
+
+/* Navbar background color and font color */
+.navbar {
+  background-color: #5a287d;
+  height: max-content;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+/* Logo and title styling */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  width: 40px; /* Adjust the image size as needed */
+  margin-right: 10px; /* Add some spacing between the logo and title */
+  vertical-align: middle; /* Vertically align the image with text */
+}
+
+/* Nav items styling */
+.navbar-nav .nav-item {
+  margin-right: 15px; /* Add spacing between nav items */
+}
+
+.navbar-nav .nav-link {
+  color: white !important; /* Font color for nav links */
+}
+
+/* Dropdown menu styling */
+.navbar-nav .dropdown-menu {
+  background-color: #5a287d; /* Background color for the dropdown menu */
+}
+
+.navbar-nav .dropdown-item {
+  color: white !important; /* Font color for dropdown items */
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: #4c236a; /* Background color on hover */
+  color: white !important; /* Font color on hover */
+}
+
+/* Add this CSS to your stylesheet */
+
+.profilecontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  border: none;
+}
+
+.card-img-top {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.btn-primary {
+  background-color: #441475;
+  color: white;
+}
+
+/* Add media queries for responsive design if needed */
+@media (max-width: 768px) {
+  .profilecontainer {
+    justify-content: center;
+  }
+  
+  .col-md-4 {
+    flex-basis: 100%; /* Cards take up full width on smaller screens */
+    max-width: 100%; /* Cards are full width on smaller screens */
+  }
+}

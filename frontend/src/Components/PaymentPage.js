@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import CommonNavbar from "./CommonNavbar";
+import Footer from "./Footer";
 const PaymentPage = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
@@ -122,7 +124,8 @@ const PaymentPage = () => {
   };
   return (
     <div className="PaymentPage">
-      <div className="container mt-4">
+      <CommonNavbar/>
+      <div className="container mt-4 mb-4">
         <div className="row justify-content-center ">
           <div className="col-md-6 formrow">
             <h1>Payment gateway </h1>
@@ -195,7 +198,7 @@ const PaymentPage = () => {
           </div>
         </div>
       </div>
-
+      <Footer/>
     </div>
   );
 }

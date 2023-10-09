@@ -40,7 +40,7 @@ const Home = () => {
         </div>
         </div>
         <div class="left column">
-            <img src="https://www.globalbankingandfinance.com/wp-content/uploads/2021/04/Bank-of-2030.jpg" alt="Image Description"/>
+            <img src="https://www.globalbankingandfinance.com/wp-content/uploads/2021/04/Bank-of-2030.jpg" alt="Image Description" height="100%"/>
         </div>
         
         </div>

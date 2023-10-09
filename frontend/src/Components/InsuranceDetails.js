@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
+import CommonNavbar from './CommonNavbar';
 
 const InsuranceDetails = () => {
   const { policynumber } = useParams();
@@ -23,59 +25,53 @@ const InsuranceDetails = () => {
     );
   }
 
-  const handlePayment=()=>{
-    const transaction_details={
-      receiverNo:policy.policynumber,
-      receiverName:policy.policyProviderName,
-      description:"Insurance amount",
-      amount:policy.premium
+  const handlePayment = () => {
+    const transaction_details = {
+      receiverNo: policy.policynumber,
+      receiverName: policy.policyProviderName,
+      description: "Insurance amount",
+      amount: policy.premium
     }
-    sessionStorage.setItem("transaction_details",JSON.stringify(transaction_details));
+    sessionStorage.setItem("transaction_details", JSON.stringify(transaction_details));
     navigate("/paymentpage");
   }
   return (
-    <div className="container-fluid service-bg vh-100" style={{ backgroundColor: 'rgb(64, 4, 80)' }}>
-      <nav className="navbar navbar-light bg-light">
-        <div className="container">
-          <a className="navbar-brand" href="#">
-            Natwest Banking
-          </a>
-          <div className="d-flex" id="navbarSupportedContent">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="navbar-brand">
-                  Welcome &nbsp;&nbsp;&nbsp;{policy.policynumber}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div>
+      <CommonNavbar/>
+      
+        
 
-      <div className="container service-content mt-5" style={{ backgroundColor: 'rgb(87, 5, 110)' }}>
-        <div className="card text-center">
-          <div className="card-header">
-            <h2 className="policy-heading">Policy Details</h2>
+        <div className="container  mt-5 mb-5">
+          <div className='row justify-content-center'>
+          <div className='col-md-6 formrow'>
+            <div className="card text-center">
+            <div className="card-header">
+              <h2 className="policy-heading">Policy Details</h2>
+            </div>
+            <div className="card-body">
+              <p className="policy-text"><strong>Policy Number:</strong> {policy.policynumber}</p>
+              <p className="policy-text"><strong>Policy Provider:</strong> {policy.policyProviderName}</p>
+              <p className="policy-text"><strong>Policy Type:</strong> {policy.policytype}</p>
+              <p className="policy-text"><strong>Policy Amount:</strong> {policy.policyamount}</p>
+              <p className="policy-text"><strong>Premium Amount:</strong> {policy.premium}</p>
+              {/* Add more policy details here */}
+              <button
+                onClick={handlePayment}
+                className="btn btn-primary"
+                
+              >
+                Pay Premium Amount:{policy.premium} INR
+              </button>
+            </div>
           </div>
-          <div className="card-body">
-            <p className="policy-text"><strong>Policy Number:</strong> {policy.policynumber}</p>
-            <p className="policy-text"><strong>Policy Provider:</strong> {policy.policyProviderName}</p>
-            <p className="policy-text"><strong>Policy Type:</strong> {policy.policytype}</p>
-            <p className="policy-text"><strong>Policy Amount:</strong> {policy.policyamount}</p>
-            <p className="policy-text"><strong>Premium Amount:</strong> {policy.premium}</p>
-            {/* Add more policy details here */}
-            <button
-          onClick={handlePayment}
-          className="btn btn-primary mt-4"
-          style={{ backgroundColor: 'rgb(87, 5, 110)' }}
-        >
-          <p className="policy-text"><strong>Pay Premium Amount:</strong> {policy.premium} INR</p>
-        </button>
           </div>
+          </div>
+          
+
+
         </div>
 
-       
-      </div>
+      <Footer/>
     </div>
   );
 };

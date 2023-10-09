@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CommonNavbar from "./CommonNavbar";
+import Footer from "./Footer";
 
 const AddAccount = () => {
     let navigate=useNavigate();
@@ -57,9 +59,10 @@ const AddAccount = () => {
 
     return (
         <div className="AddAccount">
-            <div className="container mt-4">
+            <CommonNavbar/>
+            <div className="container addaccount mt-4 mb-4">
                 <div className="row justify-content-center">
-                    <div className="col-md-6 formrow">
+                    <div className="col-md-4 formrow">
                         <h2>Link a New Account</h2>
                         <form onSubmit={handleNewAccountFormSubmit}>
                             <div className="form-group">
@@ -108,6 +111,7 @@ const AddAccount = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };

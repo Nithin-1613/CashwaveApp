@@ -31,7 +31,7 @@
   gap: 0.5rem;
 }
 
-.main-buttons > button {
+.main-buttons > .listbuttons {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0.5rem 0;
@@ -43,8 +43,12 @@
   padding: 0.5rem 1rem; /* Adjust padding for the rectangular shape */
   border-radius: 0.5rem;
   border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
+button{
+  width:max-content;
+}
 button:hover {
   background-color: rgb(185, 185, 185);
   color: rgb(7, 10, 13);
@@ -87,4 +91,8 @@ button:hover {
 .link-account-button:hover {
   background-color: rgb(141, 8, 155); /* Change the color on hover */
   /* You can adjust the hover color to your preference */
+}
+
+.policycol{
+  width:max-content;
 }

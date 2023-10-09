@@ -23,7 +23,7 @@ const ResetPassword = () => {
       try {
         // Send the updated data to the server
         console.log(user.id);
-        const updatedpassUser = await axios.put(`http://localhost:8081/userservice/update_password/${user.id}`,formData);
+        const updatedpassUser = await axios.put(`http://localhost:8081/users/update_password/${user.id}`,formData);
   
         // Dispatch a Redux action to update the user data in the store
         dispatch({ type: 'UPDATE_USER', payload: updatedpassUser.data });

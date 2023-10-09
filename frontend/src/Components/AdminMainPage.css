@@ -7,11 +7,13 @@
 .list-group{
     margin-top: 10px;
 }
-  
-  /* 3. Change the color of the h2 tag. */
-  .AdminMain h2 {
-    color: #5a287d; /* You can change this color to your preference. */
-  }
+
+.list-group-item{
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+}
+ 
   
   /* 4. Highlight the list-item on hover. */
   .list-group-item:hover {

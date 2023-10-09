@@ -3,6 +3,8 @@ import {  useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "../style.css";
 import { useSelector } from "react-redux";
+import CommonNavbar from "./CommonNavbar";
+import Footer from "./Footer";
 const Transfer = () => {
 
     let navigate=useNavigate();
@@ -40,6 +42,7 @@ const Transfer = () => {
 
     return (
         <div className="Transfer">
+            <CommonNavbar/>
             <div className="container mt-4">
                 <div className="row justify-content-center ">
                     <div className="col-md-6 formrow">
@@ -127,6 +130,7 @@ const Transfer = () => {
                 </div>
                 <button className="btn btn-primary" onClick={()=>{navigate("/transactions")}}>Back to transactions page</button>
             </div>
+            <Footer/>
         </div>
     )
 

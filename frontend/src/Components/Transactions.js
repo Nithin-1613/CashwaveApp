@@ -4,7 +4,8 @@ import axios from 'axios';
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import NavBar from "./Navbar";
+import CommonNavbar from "./CommonNavbar";
+import Footer from "./Footer";
 
 const Transactions = (props) => {
     const user = useSelector((state) => state.auth.user);
@@ -22,10 +23,10 @@ const Transactions = (props) => {
     const [showModal, setShowModal] = useState(false);
     const [showBalance, setShowBalance] = useState(false);
 
-    
+
     useEffect(() => {
         // Fetch data when the component mounts
-        
+
         axios.get("http://localhost:8080/transfer/" + userid + "/listTrans")
             .then((response) => {
                 const dataWithSNO = response.data.map((item, index) => ({
@@ -84,130 +85,135 @@ const Transactions = (props) => {
         }
         console.log(formData)
         // Make an HTTP request to your server (JSON Server in this case) with email and password
-        axios.post('http://localhost:8081/users/login', formData).then((response)=>{
+        axios.post('http://localhost:8081/users/login', formData).then((response) => {
             if (response.data) {
                 setShowBalance(true);
                 setPin("");
             }
-            
-        }).catch(()=>{
+
+        }).catch(() => {
             setPinError("\Invalid Pin");
         })
 
-        
+
     }
 
     const handleCloseModal = () => {
         setShowBalance(false);
         setShowModal(false);
+        setPin("");
+        setPinError("");
     }
     return (
         <div className="transaction">
-            <NavBar/>
+            <CommonNavbar />
             <div className="Transactions container mt-4">
-            
-            <button type="submit" className="btn btn-primary" onClick={() => navigate('/transfer')}>Make Transfer</button>
-            <button type="submit" className="btn btn-primary" onClick={() => navigate('/selftransfer')}>Self Transfer</button>
-            <Tabs defaultActiveKey="view-transactions" id="myTabs">
-                <Tab eventKey="view-transactions" title="View Transactions">
-                    <div className="TransactionsList container mt-4">
-                        <h2>View Transactions</h2>
-                        <div className="mb-3">
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Search"
-                                value={filterText}
-                                onChange={handleFilterChange}
-                            />
-                        </div>
-                        <table className="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>SNO</th>
-                                    <th>Account Holder Name</th>
-                                    <th>Account No</th>
-                                    <th>Amount</th>
-                                    <th>Description</th>
-                                    <th>From Account No</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filteredTable.map((item) => (
-                                    <tr key={item.sno}>
-                                        <td>{item.sno}</td>
-                                        <td>{item.receiverName}</td>
-                                        <td>{item.receiverNo}</td>
-                                        <td>{item.amount}</td>
-                                        <td>{item.description}</td>
-                                        <td>{item.fromAccount}</td>
+
+
+                <Tabs defaultActiveKey="view-transactions" id="myTabs">
+                    <Tab eventKey="view-transactions" title="View Transactions">
+                        <div className="TransactionsList container mt-4">
+                            <h2>View Transactions</h2>
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Search"
+                                    value={filterText}
+                                    onChange={handleFilterChange}
+                                />
+                            </div>
+                            <table className="table ">
+                                <thead>
+                                    <tr>
+                                        <th>SNO</th>
+                                        <th>Receiver Name</th>
+                                        <th>Receiver No</th>
+                                        <th>Amount</th>
+                                        <th>Description</th>
+                                        <th>From Account No</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </Tab>
-                <Tab eventKey="check-balance" title="Check Account Balance">
-                    <div className="TransactionsList container mt-4">
-                        <div className="row justify-content-center">
-                            <div className="col-md-6">
-                                <h3>Accounts </h3>
-                                <div className="card-list">
-                                    {accounts.map((account) => (
-                                        <div
-                                            key={account.accountNo}
-                                            className="card mb-3"
-                                            onClick={() => handleToSelectAccount(account)}
-                                        >
-                                            <div className="card-body">
-                                                <h5 className="card-title">{account.accountBankName}</h5>
-                                                <p className="card-text">Account Number: {account.accountNo}</p>
-                                            </div>
-                                        </div>
+                                </thead>
+                                <tbody>
+                                    {filteredTable.map((item) => (
+                                        <tr key={item.sno}>
+                                            <td>{item.sno}</td>
+                                            <td>{item.receiverName}</td>
+                                            <td>{item.receiverNo}</td>
+                                            <td>{item.amount}</td>
+                                            <td>{item.description}</td>
+                                            <td>{item.fromAccount}</td>
+                                        </tr>
                                     ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </Tab>
+                    <Tab eventKey="check-balance" title="Check Account Balance">
+                        <div className="TransactionsList container mt-4">
+                            <div className="row justify-content-center">
+                                <div className="col-md-6">
+                                    <h3>Accounts </h3>
+                                    <div className="card-list">
+                                        {accounts.map((account) => (
+                                            <div
+                                                key={account.accountNo}
+                                                className="card mb-3"
+                                                onClick={() => handleToSelectAccount(account)}
+                                            >
+                                                <div className="card-body">
+                                                    <h5 className="card-title">{account.accountBankName}</h5>
+                                                    <p className="card-text">Account Number: {account.accountNo}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </Tab>
-            </Tabs>
+                    </Tab>
+                </Tabs>
 
-            <Modal show={showModal} onHide={() => setShowModal(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Enter pin</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className="mb-3 form-group">
-                        <label htmlFor="pin" className="form-label">
-                            PIN
-                        </label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="pin"
-                            name="pin"
-                            value={pin}
-                            onChange={handlePinChange}
-                            required
-                        />
-                        {pinError && (
-                            <div className="text-danger">{pinError}</div>
-                        )}
-                    </div>
+                <Modal show={showModal} onHide={() => setShowModal(false)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Enter pin</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="mb-3 form-group">
+                            <label htmlFor="pin" className="form-label">
+                                PIN
+                            </label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="pin"
+                                name="pin"
+                                value={pin}
+                                onChange={handlePinChange}
+                                required
+                            />
+                            {pinError && (
+                                <div className="text-danger">{pinError}</div>
+                            )}
+                        </div>
 
-                    {
-                        showBalance && (
-                            <h3 className="Balance-text">Balance: {selectedAccount.accountBalance} Rs. </h3>
-                        )
-                    }
-                </Modal.Body>
-                <Modal.Footer>
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleCloseModal}>Close</button>
-                    <button type="submit" className="btn btn-primary" onClick={handleCheckBalance}>Check Balance</button>
-                </Modal.Footer>
-            </Modal>
-        </div>
-                <button className="btn btn-primary" onClick={()=>{navigate("/profile")}}>Back to profile page</button>
+                        {
+                            showBalance && (
+                                <h3 className="Balance-text">Balance: {selectedAccount.accountBalance} Rs. </h3>
+                            )
+                        }
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={handleCloseModal}>Close</button>
+                        <button type="submit" className="btn btn-primary" onClick={handleCheckBalance}>Check Balance</button>
+                    </Modal.Footer>
+                </Modal>
+                <button type="submit" className="btn btn-primary" onClick={() => navigate('/transfer')}>Make Transfer</button>
+                <button type="submit" className="btn btn-primary" onClick={() => navigate('/selftransfer')}>Self Transfer</button>
+                <button className="btn btn-primary" onClick={() => { navigate("/profile") }}>Back to profile page</button>
+            </div>
+
+            <Footer />
         </div>
     );
 }

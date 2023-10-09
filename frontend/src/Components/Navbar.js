@@ -22,7 +22,7 @@ const NavBar = () => {
   return (
       // Conditional rendering or provide a default value
       
-      <nav class="navbar">
+      <nav class="navbar"  style={{ backgroundColor: '#420f5f' }}>
       <div class="navbar-logo">
           <a href="#">
               <img src="https://www.fintechfutures.com/files/2023/02/Natwest.png" width="50" height="50" alt="Brand Logo"/>

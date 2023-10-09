@@ -1,6 +1,4 @@
-body {
-  background-color: #fff; /* Replace with the color of your choice */
-}
+
 
 .d-grid {
   position: absolute;
@@ -15,14 +13,28 @@ body {
   font-family: "RNHouseSansRegular",sans-serif;
   padding: 10px 10px;
   border-radius: 100px; 
-  background-color: #5a287d; 
-  color: #fff; 
+  background-color: white; 
+  color: #2b1539; 
   cursor: pointer;
   transition: background-color 0.3s ease; 
   margin: 1px; 
+  width: 100% !important;
+  margin-bottom: 1rem;
+  font-weight: bolder;
 }
 
 .pill-button:hover {
-  background-color: #2b1539; /* Change background color on hover */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
+.loancontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+  height: 80vh; /* Optionally, set a specific height for vertical centering */
+}
+
+.loancontainer .col-md-6 {
+  text-align: center; /* Center the content within the column */
+}
