@@ -39,7 +39,7 @@ const PayEMI = () => {
   };
 
   return (
-    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+    <div id="formcontent-addloan" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
       <h2>Pay EMI</h2>
       <p>Selected Lender: {selectedLender}</p>
       <div>

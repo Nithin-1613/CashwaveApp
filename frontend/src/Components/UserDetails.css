@@ -1,8 +1,8 @@
-#formcontent h2{
+#formcontent-userdetails h2{
     color: #5a287d;
 }
 
-#formcontent {
+#formcontent-userdetails {
     display: absolute;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +11,7 @@
     transform: translate(0, 20%);
   }
 
-  #formcontent input[type="text"] {
+  #formcontent-userdetails input[type="text"] {
     width: 100%; /* Make the input fields take up the full width of their container */
     padding: 5px;
     margin: 2px 0;
@@ -20,7 +20,7 @@
     font-size: 16px;
   }
   
-  #formcontent input[type="text"]:focus {
+  #formcontent-userdetails input[type="text"]:focus {
     border-color: #5a287d; /* Change border color on focus */
     outline: none; /* Remove the default focus outline */
   }

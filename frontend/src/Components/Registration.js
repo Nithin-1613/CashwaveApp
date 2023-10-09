@@ -214,34 +214,7 @@ const Register = () => {
                 rel="stylesheet"
                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
             />
-            <div>
-                <footer class="footer">
-                    <link
-                        rel="stylesheet"
-                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-                    />
-                    <div class="left-section">
-                        <div class="footer-links">
-                            <a href="/contact-us">Contact Us</a>
-
-                            <a href="/privacy-cookies">Privacy and Cookies</a>
-                            <a href="/get-our-app">Get Our App</a>
-                            <div class="copyright">
-                                &copy; 2023 NatwestBank.com
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="right-section">
-                        <div class="footer-links">
-                            <div class="social-icon-box" style={{ backgroundColor: '#1877f2' }}><a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a></div>
-                            <div class="social-icon-box" style={{ backgroundColor: '#1da1f2' }}><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a></div>
-                            <div class="social-icon-box" style={{ backgroundColor: '#c32aa3' }}><a href="#" class="social-icon"><i class="fab fa-instagram"></i></a></div>
-                        </div>
-
-                    </div>
-                </footer>
-            </div>
+            
 
         </div>
     )

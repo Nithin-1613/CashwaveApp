@@ -24,7 +24,7 @@ const Details = () => {
   };
 
   return (
-    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+    <div id="formcontent-addloan" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
       <h2>Loan Details</h2>
       <p>Selected Lender: {loanDetails.lender}</p>
       <p>Loan Number: {loanDetails.loanNumber}</p>

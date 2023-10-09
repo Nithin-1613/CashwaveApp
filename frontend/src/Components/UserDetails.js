@@ -79,7 +79,7 @@ const UserDetails = ({ match, history }) => {
 
   return (
     <div className = "UserDetails">
-    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+    <div id="formcontent-userdetails" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
       <h2>User Details</h2>
       <p><strong>User Name:</strong> {user.name}</p>
       <p><strong>Upi ID:</strong> {user.upi_ID}</p>
