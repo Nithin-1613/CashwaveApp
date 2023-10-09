@@ -5,6 +5,7 @@ import { fetchUserData } from '../Redux/actions1';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 
  
 const Login = () => {
@@ -28,11 +29,14 @@ const Login = () => {
 
       if (response.data) {
         const user =response.data;
-        console.log(user);
+        if(user.block==0){
         // Dispatch an action to update the user's authentication state
         localStorage.setItem('user', JSON.stringify(user));
         dispatch(fetchUserData(formData.emailid, formData.security_PIN));
         navigate("/profile");
+        }else{
+          alert('Account is blocked');
+        }
       } else {
         // Handle login error, show an error message, etc.
         alert('Please enter valid details');
@@ -89,6 +93,7 @@ const Login = () => {
               onChange={handleInputChange}
             />
             <button type="submit">Login</button>
+            <Link to="/forgot-password" className="forgot-password-link">Forgot Password</Link>
           </form>
           </div>
           </div>

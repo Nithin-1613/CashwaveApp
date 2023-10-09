@@ -24,6 +24,10 @@ import Home from './Components/Home';
 import Profile from './Components/Profile';
 import Contact from './Components/contact-us';
 import PrivacyAndCookies from './Components/Privacy ';
+import PersonalInfo from './Components/Personalinfo';
+import EditProfileForm from './Components/EditProfileform';
+import ForgotPassword from './Components/Forgotpassword';
+import ResetPassword from './Components/PasswordReset';
 import AddAccount from './Components/AddAccount';
 
 function App() {
@@ -38,6 +42,10 @@ function App() {
             <Route exact path="/profile" element={<Profile/>} />
             <Route exact path="/contact-us" element={<Contact/>} /> 
             <Route exact path="/Privacy" element={<PrivacyAndCookies/>} />
+            <Route exact path="/Personalinfo" element={<PersonalInfo/>} />
+            <Route exact path="/EditProfileform" element={<EditProfileForm/>} />
+            <Route exact path="/forgot-password"  element={<ForgotPassword/>} />
+            <Route exact path='/PasswordReset' element={<ResetPassword/>}/>
            
             {/* Add more routes for other pages */}
             <Route render={() => <div>Page not found</div>} />

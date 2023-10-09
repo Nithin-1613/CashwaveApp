@@ -71,5 +71,45 @@ export const login = (userData) => {
           }
         };
       };
+
+      // Action types
+export const INITIATE_PASSWORD_RESET_SUCCESS = 'INITIATE_PASSWORD_RESET_SUCCESS';
+export const INITIATE_PASSWORD_RESET_FAILURE = 'INITIATE_PASSWORD_RESET_FAILURE';
+
+// Action creators
+export const initiatePasswordResetSuccess = (message) => ({
+  type: INITIATE_PASSWORD_RESET_SUCCESS,
+  message,
+});
+
+export const initiatePasswordResetFailure = (error) => ({
+  type: INITIATE_PASSWORD_RESET_FAILURE,
+  error,
+});
+
+// Thunk action for initiating password reset
+export const initiatePasswordReset = (emailid) => async (dispatch) => {
+  try {
+    console.log(emailid);
+    const response = await axios.post(
+      'http://localhost:8081/userservice/forgot-password',
+      { emailid }
+    );
+
+    if (response.status === 200) {
+      dispatch(initiatePasswordResetSuccess(response.data));
+    } else {
+      dispatch(initiatePasswordResetFailure('Something went wrong.'));
+    }
+  } catch (error) {
+    dispatch(initiatePasswordResetFailure('Something went wrong.'));
+  }
+};
+
+export const updateUser = (userData) => ({
+  type: 'UPDATE_USER',
+  payload: userData,
+});
+
   
   
