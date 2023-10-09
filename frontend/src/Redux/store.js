@@ -7,6 +7,7 @@ import lendersReducer from './reducers/lendersReducer';
 import loanDetailsReducer from './reducers/loanDetailsReducer';
 import emiReducer from './reducers/emiReducer';
 import authReducer from './reducers';
+import adminReducer from './reducers/adminReducer';
 
 const rootReducer = combineReducers({
   payLoan: payLoanReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   loanDetails: loanDetailsReducer,
   emi: emiReducer,
   reducer: Reducer,
-  auth:authReducer
+  auth:authReducer,
+  admin: adminReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));

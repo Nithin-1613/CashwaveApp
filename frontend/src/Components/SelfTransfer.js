@@ -22,7 +22,7 @@ const SelfTransfer = () => {
     const [showNewAccountModal, setShowNewAccountModal] = useState(false);
     
     useEffect(() => {
-        axios.get("http://localhost:8082/account/" + userid + "/listAccounts")
+        axios.get("http://localhost:8082/accounts/" + userid + "/listAccounts")
             .then((response) => {
                 setAccounts(response.data);
                 if (response.data.length > 0) {
@@ -80,7 +80,7 @@ const SelfTransfer = () => {
         e.preventDefault();
         const newErrors = validateForm();
         if (Object.keys(newErrors).length === 0) {
-            axios.post("http://localhost:8082/account/"+email+"/addAccount", newAccountData)
+            axios.post("http://localhost:8082/accounts/"+email+"/addAccount", newAccountData)
             .then((response) => {
                 setAccounts([...accounts, response.data]);
                 setShowNewAccountModal(false);

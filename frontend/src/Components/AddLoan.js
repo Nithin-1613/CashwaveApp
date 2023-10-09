@@ -27,7 +27,7 @@ const AddLoan = () => {
     }
 
     try {
-      const response = await axios.get('http://localhost:9091/api/loans/loans');
+      const response = await axios.get('http://localhost:9091/loans/loans');
       const existingLoan = response.data.find(
         (loan) =>
           loan.lender === selectedLender &&
@@ -39,7 +39,7 @@ const AddLoan = () => {
         return;
       }
 
-      await axios.post('http://localhost:9091/api/loans', {
+      await axios.post('http://localhost:9091/loans', {
         lender: selectedLender,
         loanNumber,
         amountPayable
@@ -53,7 +53,7 @@ const AddLoan = () => {
   };
 
   return (
-    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+    <div id="formcontent-addloan" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
       <h2>Add Loan Details</h2>
       <p>Selected Lender: {selectedLender}</p>
       <div>

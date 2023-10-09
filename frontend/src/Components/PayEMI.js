@@ -17,9 +17,9 @@ const PayEMI = () => {
   const handleCheckLoan = async () => {
 
       try {
-        const response = await axios.get("http://localhost:9091/api/loans/loans");
+        const response = await axios.get("http://localhost:9091/loans/loans");
         console.log("Hi Response2!");
-        console.log("http://localhost:9091/api/loans/loans");
+        console.log("http://localhost:9091/loans/loans");
         console.log(loanNumber);
         console.log(response.data);
 
@@ -39,7 +39,7 @@ const PayEMI = () => {
   };
 
   return (
-    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+    <div id="formcontent-addloan" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
       <h2>Pay EMI</h2>
       <p>Selected Lender: {selectedLender}</p>
       <div>

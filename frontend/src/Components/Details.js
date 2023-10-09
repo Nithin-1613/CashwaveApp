@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEmiAmount } from '../Redux/actions';
 import { useNavigate } from 'react-router-dom';
-
+import "./details.css";
 const Details = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -13,13 +13,18 @@ const Details = () => {
   const handleContinuePayment = () => {
    
     dispatch(setEmiAmount(emiAmount));
-    console.log(loanDetails);
-
-    navigate("/banks");
+    const transaction_details={
+      receiverNo:loanDetails.loanNumber,
+      receiverName:loanDetails.lender,
+      amount:emiAmount,
+      description:"Loan emi"
+    }
+    sessionStorage.setItem("transaction_details",JSON.stringify(transaction_details));
+    navigate("/paymentpage");
   };
 
   return (
-    <div id="formcontent" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+    <div id="formcontent-addloan" className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
       <h2>Loan Details</h2>
       <p>Selected Lender: {loanDetails.lender}</p>
       <p>Loan Number: {loanDetails.loanNumber}</p>

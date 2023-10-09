@@ -27,7 +27,7 @@ const PaymentPage = () => {
   useEffect(() => {
 
 
-    axios.get("http://localhost:8082/account/" + userid + "/listAccounts")
+    axios.get("http://localhost:8082/accounts/" + userid + "/listAccounts")
       .then((response) => {
         setAccounts(response.data); // Assuming the response is an array of accounts
       })
@@ -63,7 +63,7 @@ const PaymentPage = () => {
     }
     console.log(formData)
     // Make an HTTP request to your server (JSON Server in this case) with email and password
-    axios.post('http://localhost:8081/userservice/login', formData).then((responsePin) => {
+    axios.post('http://localhost:8081/users/login', formData).then((responsePin) => {
       if (responsePin.data) {
         const transaction_details = {
           receiverNo: details.receiverNo,

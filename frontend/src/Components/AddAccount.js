@@ -36,7 +36,7 @@ const AddAccount = () => {
         e.preventDefault();
         const newErrors = validateForm();
         if (Object.keys(newErrors).length === 0) {
-            axios.post("http://localhost:8082/account/"+userid+"/addAccount", newAccountData)
+            axios.post("http://localhost:8082/accounts/"+userid+"/addAccount", newAccountData)
             .then((response) => {
                 alert("New Account added successfully");
                 navigate('/transactions');

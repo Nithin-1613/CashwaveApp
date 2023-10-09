@@ -1,0 +1,27 @@
+#formcontent-userdetails h2{
+    color: #5a287d;
+}
+
+#formcontent-userdetails {
+    display: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform: translate(0, 20%);
+  }
+
+  #formcontent-userdetails input[type="text"] {
+    width: 100%; /* Make the input fields take up the full width of their container */
+    padding: 5px;
+    margin: 2px 0;
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #formcontent-userdetails input[type="text"]:focus {
+    border-color: #5a287d; /* Change border color on focus */
+    outline: none; /* Remove the default focus outline */
+  }
+

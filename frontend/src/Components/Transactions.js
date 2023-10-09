@@ -26,7 +26,7 @@ const Transactions = (props) => {
     useEffect(() => {
         // Fetch data when the component mounts
         
-        axios.get("http://localhost:9090/transfer/" + userid + "/listTrans")
+        axios.get("http://localhost:8080/transfer/" + userid + "/listTrans")
             .then((response) => {
                 const dataWithSNO = response.data.map((item, index) => ({
                     ...item,
@@ -36,7 +36,7 @@ const Transactions = (props) => {
                 setFilteredTable(dataWithSNO);
             });
 
-        axios.get("http://localhost:8082/account/" + userid + "/listAccounts")
+        axios.get("http://localhost:8080/accounts/" + userid + "/listAccounts")
             .then((response) => {
                 if (response.data.length === 0) {
                     // If there are no accounts, navigate to the '/addaccount' route
@@ -84,7 +84,7 @@ const Transactions = (props) => {
         }
         console.log(formData)
         // Make an HTTP request to your server (JSON Server in this case) with email and password
-        axios.post('http://localhost:8081/userservice/login', formData).then((response)=>{
+        axios.post('http://localhost:8081/users/login', formData).then((response)=>{
             if (response.data) {
                 setShowBalance(true);
                 setPin("");
