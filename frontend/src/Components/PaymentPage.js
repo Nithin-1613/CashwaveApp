@@ -112,7 +112,7 @@ const PaymentPage = () => {
         setPin("");
         setPinError(null);
         sessionStorage.clear();
-        navigate("/transfer");
+        navigate("/transactions");
 
       }
     }).catch((error)=>{
@@ -152,6 +152,7 @@ const PaymentPage = () => {
                 <input
                   type="password"
                   className="form-control"
+                  placeholder="security_PIN"
                   id="pin"
                   name="pin"
                   value={pin}
@@ -189,7 +190,7 @@ const PaymentPage = () => {
                 Pay
               </button>
               <button type="cancel" onClick={() => {
-                navigate("/transfer");
+                navigate("/creditcard");
                 sessionStorage.clear();
               }} className="btn btn-primary">
                 Cancel

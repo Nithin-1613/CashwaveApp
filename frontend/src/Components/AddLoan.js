@@ -37,7 +37,7 @@ const AddLoan = () => {
       );
       console.log(response.data)
       if (existingLoan) {
-        alert('Record already exists.');
+        alert('Record already exists!');
         return;
       }
 
@@ -47,10 +47,11 @@ const AddLoan = () => {
         amountPayable
       });
 
-      navigate("/payloan");
+      navigate("/profile");
+      alert('Loan Details added Successfully!');
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred while processing the request.');
+      alert('An error occurred while processing the request!');
     }
   };
 

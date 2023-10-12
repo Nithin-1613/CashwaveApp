@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     try {
       // Make an HTTP request to your server (JSON Server in this case) with email and password
-      if (formData.emailid == "admin" && formData.security_PIN == "1947") {
+      if (formData.emailid == "admin@gmail.com" && formData.security_PIN == "1947") {
         navigate("/admin");
       }
       else {
@@ -63,12 +63,11 @@ const Login = () => {
       <CommonNavbar/>
       <div className="container login-container">
         <div className="row">
-          <div className="col-md-6  loginformrow offset-md-3 mt-4">
+          <div className="col-md-6  loginformrow offset-md-3 mt-4" style = {{textAlign: "center"}}>
             <div className="tquote text-center">
-              <h5>Welcome to Natwest Banking</h5>
-              <h3>LOGIN</h3>
+            <h2 className=" mb-4"> Login </h2>
             </div>
-            <div className="login-box">
+            <div className="login-box" style = {{marginLeft: "25px"}}>
               <form className="login-form" onSubmit={handleLogin}>
                 <div className="mb-3">
                   <input

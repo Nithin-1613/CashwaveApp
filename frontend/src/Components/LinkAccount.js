@@ -122,7 +122,7 @@ const LinkAccount = () => {
       });
 
       dispatch(linkAccountSuccess(linkAccountResponse.data));
-      navigate('/');
+      navigate('/insurance');
       setSuccessMessage('Account Linking Successful');
       setPolicy(initialPolicyState);
     } catch (error) {

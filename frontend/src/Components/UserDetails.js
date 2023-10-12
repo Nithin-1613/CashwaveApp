@@ -45,6 +45,7 @@ const UserDetails = ({ match, history }) => {
         // Optionally, you can update the user object in state to reflect the change
         setUser({ ...user, block: 1 });
         console.log(user.block);
+        navigate('/admin');
       })
       .catch((error) => {
         console.error('Error deactivating the account:', error);
@@ -57,6 +58,7 @@ const UserDetails = ({ match, history }) => {
       .then(() => {
         // Optionally, you can update the user object in state to reflect the change
         setUser({ ...user, block: 0 });
+        navigate('/admin');
       })
       .catch((error) => {
         console.error('Error reactivating the account:', error);
@@ -68,7 +70,7 @@ const UserDetails = ({ match, history }) => {
     axios.delete("http://localhost:9093/api/users/" + user.id)
       .then(() => {
         // After successful deletion, navigate back to the user list
-        navigate('/');
+        navigate('/admin');
       })
       .catch((error) => {
         console.error('Error deleting the account:', error);
@@ -82,9 +84,9 @@ const UserDetails = ({ match, history }) => {
   return (
     <div className="UserDetails">
       <CommonNavbar />
-      <div className='container mt-4 userdetailscontainer mb-4'>
+      <div className='container mt-4 userdetailscontainer mb-4' style = {{marginBottom: "200px"}}>
         <div className='row justify-content-center'>
-          <div id="formcontent-userdetails" className='col-md-6 formrow'>
+          <div id="formcontent-userdetails" className='col-md-6 formrow' style = {{marginBottom: "100px"}}>
             <h2>User Details</h2>
             <p><strong>User Name:</strong> {user.name}</p>
             <p><strong>Upi ID:</strong> {user.upi_ID}</p>
@@ -92,14 +94,30 @@ const UserDetails = ({ match, history }) => {
             <p><strong>Email Id:</strong> {user.emailid}</p>
             <p><strong>DOB:</strong> {user.dateofbirth}</p>
             <p><strong>AadharCard Number:</strong> {user.aadharcardnumber}</p>
-            <p><strong>Security PIN:</strong> {user.security_PIN}</p>
             <p><strong>Salt:</strong> {user.salt}</p>
-            <p><strong>Reset Token:</strong> {user.resetToken}</p>
-            <p><strong>Reset Token Expiry Date:</strong> {user.resetTokenExpiryDate}</p>
+            
 
-            <button className="adminbutton" onClick={handleDeactivate} disabled={user.block === 1}>Block</button>
-            <button className="adminbutton" onClick={handleReactivate} disabled={user.block === 0}>Unblock</button>
-            <button className="adminbutton" onClick={handleDelete}>Delete</button>
+            <button className="adminbutton"
+              style={{
+                backgroundColor: user.block === 1 ? "#cccccc" : "#420f5f", // Grey for disabled, Purple for enabled
+                color: "white", // Text color
+                // marginLeft: "5px",
+                border: "none", // Remove the border
+                padding: "10px 20px", // Adjust padding as needed
+                borderRadius: "20px", // Pill-shaped button
+                cursor: "pointer", // Add a pointer cursor on hover
+              }} onClick={handleDeactivate} disabled={user.block === 1}>Block</button>
+            <button className="adminbutton"
+              style={{
+                backgroundColor: user.block === 0 ? "#cccccc" : "#420f5f", // Grey for disabled, Purple for enabled
+                color: "white", // Text color
+                // marginLeft: "10px",
+                border: "none", // Remove the border
+                padding: "10px 20px", // Adjust padding as needed
+                borderRadius: "20px", // Pill-shaped button
+                cursor: "pointer", // Add a pointer cursor on hover
+              }}onClick={handleReactivate} disabled={user.block === 0}>Unblock</button>
+            <button  className="adminbutton" onClick={handleDelete}>Delete</button>
           </div>
         </div>
       </div>

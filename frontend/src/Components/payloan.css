@@ -11,7 +11,8 @@
 .pill-button {
   border: none;
   font-family: "RNHouseSansRegular",sans-serif;
-  padding: 10px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-radius: 100px; 
   background-color: white; 
   color: #2b1539; 
@@ -19,8 +20,8 @@
   transition: background-color 0.3s ease; 
   margin: 1px; 
   width: 100% !important;
-  margin-bottom: 1rem;
-  font-weight: bolder;
+  margin-bottom: 0.3rem;
+  /* font-weight: bolder; */
 }
 
 .pill-button:hover {

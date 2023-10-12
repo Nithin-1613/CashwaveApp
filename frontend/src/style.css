@@ -30,7 +30,13 @@ body{
     padding: 1rem !important;
     /* padding-left: 2rem !important;
     padding-right: 2rem !important; */
-    border-radius: 100px; /* This value can be adjusted as needed for the desired pill shape */
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+    border-radius: 40px; /* This value can be adjusted as needed for the desired pill shape */
+}
+
+.personalcontainer{
+    min-height:80vh
 }
 
 .recentTransactions{
@@ -88,7 +94,7 @@ thead{
 }
 
 .selected-card {
-    border: 0.5rem black solid !important;
+    border: 0.2rem #420f5f !important;
   }
 
   .modal-title-custom{
@@ -102,6 +108,11 @@ thead{
   .card{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin-top: 2rem;
+  }
+
+  .card:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 10px #420f5f(245, 243, 243, 0.25)
   }
   textarea{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -133,19 +144,20 @@ thead{
     margin-top: 5rem;
 }
 
-/* CSS for styling tab titles in Tabs component */
-#myTabs .nav-link {
-    color: white !important; /* Tab titles in white */
-    background-color: transparent; /* Transparent background by default */
-    border: none; /* Remove border */
-  }
-  
-  #myTabs .nav-item.show .nav-link,
-  #myTabs .nav-link.active {
-    color: #420f5f !important; /* White text color when tab is active */
-    background-color: white !important; /* Purple background when tab is active */
-    border: none; /* Remove border when tab is active */
-  }
+.nav-item {
+    background-color: transparent; /* Remove the default background color */
+}
+
+.nav-link.active {
+    background-color: #420f5f !important; /* Set the background color when the tab is active */
+    color: white; /* Set the text color when the tab is active */
+    border-radius: 0;
+}
+
+.nav-link {
+    color: white; /* Set the default text color for the tab titles */
+    border-radius: 0;
+}
 
   .SelfTransfer > .container >h1{
     font-size: 3rem;

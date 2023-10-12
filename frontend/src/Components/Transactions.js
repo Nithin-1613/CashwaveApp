@@ -104,6 +104,11 @@ const Transactions = (props) => {
         setPin("");
         setPinError("");
     }
+
+    const mapAccountNoToName = (fromAccountNo) => {
+        const account = accounts.find((acc) => acc.accountNo === fromAccountNo);
+        return account ? account.accountBankName : 'N/A';
+      };
     return (
         <div className="transaction">
             <CommonNavbar />
@@ -131,7 +136,8 @@ const Transactions = (props) => {
                                         <th>Receiver No</th>
                                         <th>Amount</th>
                                         <th>Description</th>
-                                        <th>From Account No</th>
+                                        <th>From Account</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -142,7 +148,8 @@ const Transactions = (props) => {
                                             <td>{item.receiverNo}</td>
                                             <td>{item.amount}</td>
                                             <td>{item.description}</td>
-                                            <td>{item.fromAccount}</td>
+                                            
+                                            <td>{mapAccountNoToName(item.fromAccount)} - {item.fromAccount}</td>
                                         </tr>
                                     ))}
                                 </tbody>

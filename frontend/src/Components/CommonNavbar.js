@@ -7,17 +7,17 @@ const CommonNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#420f5f' }}>
       <div className="container">
-        <a className="navbar-brand" >
+      <div class="navbar-logo" style={{ marginLeft: "0px" }}>
+        <a href="#">
           <img
             src="https://www.fintechfutures.com/files/2023/02/Natwest.png"
-            alt="Cashwave Logo"
-            width="70"
+            width="50"
             height="50"
-            className="d-inline-block align-text-top"
+            alt="Brand Logo"
           />
-          
         </a>
-        <h3>Cashwave</h3>
+      </div>
+        <h5 style = {{marginTop: "3px"}}>CashWave</h5>
         <button
           className="navbar-toggler "
           type="button"
@@ -26,6 +26,7 @@ const CommonNavbar = () => {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style = {{backgroundColor: "white"}}
         >
           <span className="navbar-toggler-icon navbar-light"></span>
         </button>

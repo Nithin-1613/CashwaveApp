@@ -69,7 +69,7 @@ const CreditCard = () => {
     const handlePayment = () => {
         const transaction_details = {
             receiverNo: selectCreditCard.creditCardNo,
-            receiverName: selectCreditCard.cardHolderName,
+            receiverName: selectCreditCard.bankName,
             description: "Creditcard bill"
         }
         sessionStorage.setItem('transaction_details', JSON.stringify(transaction_details));
@@ -109,7 +109,7 @@ const CreditCard = () => {
     return (
         <div className="creditcard ">
             <CommonNavbar/>
-            <div className="container mt-4">
+            <div className="container mt-4 personalcontainer">
                 
                 {loading ? (
                     <p>Loading...</p>

@@ -56,7 +56,7 @@ const PayEMI = () => {
                 onChange={(e) => setLoanNumber(e.target.value)}
               />
             </div>
-            <button onClick={handleCheckLoan}>Check Loan</button>
+            <button onClick={handleCheckLoan}>Check Loan Details</button>
 
           </div>
         </div>

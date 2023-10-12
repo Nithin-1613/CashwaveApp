@@ -14,10 +14,15 @@ const Details = () => {
 
   const handleContinuePayment = () => {
 
+    if (parseInt(emiAmount) <= 100) {
+      alert('EMI amount should be greater than 100.');
+      return;
+    }
+
     dispatch(setEmiAmount(emiAmount));
     const transaction_details = {
-      receiverNo: loanDetails.loanNumber,
-      receiverName: loanDetails.lender,
+      receiverName: loanDetails.loanNumber,
+      receiverNo: loanDetails.lender,
       amount: emiAmount,
       description: "Loan emi"
     }

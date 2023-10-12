@@ -2,7 +2,7 @@ import React from 'react';
 
 const PrivacyAndCookies = () => {
   return (
-    <div className="privacy-and-cookies">
+    <div className="privacy-and-cookies" style = {{color: "white"}}>
       <div className="container">
         <h1>Privacy and Cookies Policy</h1>
         <h2>Privacy Policy</h2>

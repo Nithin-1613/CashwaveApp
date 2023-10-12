@@ -141,9 +141,9 @@ const Register = () => {
             <CommonNavbar/>
             <div className="container registercontainer">
                 <div className='row'>
-                    <div id="formcontent" className='col-md-5 offset-md-3 border rounded  shadow'>
+                    <div id="formcontent" className="col-md-6  loginformrow offset-md-3 mt-4" style = {{marginTop: "40px", marginBottom: "40px"}}>
                         <div className="text-center">
-                            <h2 className=" mb-4"> RegisterUsers</h2>
+                            <h2 className=" mb-4"> Register </h2>
                         </div>
                         <form onSubmit={(e) => onSubmit(e)}>
                             <div className='mb-3'>
@@ -210,8 +210,8 @@ const Register = () => {
                                 {!isPINValid && <span className='text-danger'>Invalid Security PIN</span>}
                             </div>
 
-                            <button type="submit" className='btn btn-outline-primary'>Submit</button>
-                            <Link to="/" className='btn btn-danger mx-2'>Cancel</Link>
+                            <button type="submit" className='btn btn-primary'>Submit</button>
+                            <Link to="/" className='btn btn-primary'>Cancel</Link>
                         </form>
 
                     </div>

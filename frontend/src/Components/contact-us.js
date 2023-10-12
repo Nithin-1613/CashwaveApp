@@ -1,34 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CommonNavbar from './CommonNavbar';
 
 
 const ContactUs = () => {
   return (
     <div>
-      <h1>Contact Us</h1>
+      <CommonNavbar/>
+    <div style = {{color: "white", marginTop: "30px"}}>
+      <h2>Contact Us</h2>
       <p>If you have any questions or need assistance, please feel free to contact us using the information below:</p>
 
       <div>
-        <h2>Our Contact Information</h2>
+        <h4>Our Contact Information</h4>
         <p>Email: contact@natwest-bank.com</p>
         <p>Phone: +1 (123) 456-7890</p>
         <p>Address: 123 Bank Street, City, Country</p>
       </div>
 
       <div>
-        <h2>Contact Form</h2>
+        <h4 style={{marginBottom: "30px"}}>Contact Form</h4>
         <form>
           <div className="form-group">
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" className="form-control" />
+            <input type="text" placeholder='Enter your name' id="name" name="name" className="form-control" />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" className="form-control" />
+            <input type="email" placeholder='Enter your email' id="email" name="email" className="form-control" />
           </div>
           <div className="form-group">
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" name="message" className="form-control" rows="4"></textarea>
+            <textarea id="message" placeholder='Description' name="message" className="form-control" rows="4"></textarea>
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
           <Link to="/"  className='btn btn-danger mx-2'>Cancel</Link>
@@ -61,6 +61,7 @@ const ContactUs = () => {
     
   </div>
 </footer>
+    </div>
     </div>
   );
 };
